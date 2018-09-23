@@ -26,7 +26,5 @@ describe('models', () => {
           students.forEach(student => expect(student.schoolId).to.be.ok)
         })
     });
-
   })
-
 });
