@@ -9,19 +9,23 @@
     "build": "webpack"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "chai": "^4.1.2",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
     "pg": "^7.4.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "sequelize": "^4.38.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-preset-stage-2": "^7.0.0",
     "babel-loader": "^8.0.2",
     "babel-polyfill": "^6.26.0",
     "morgan": "^1.9.1",
