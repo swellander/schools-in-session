@@ -5,17 +5,34 @@
   "license": "MIT",
   "scripts": {
     "test": "DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
-    "start": "DATABASE_URL=postgres://localhost/schools_test nodemon server"
+    "dev": "DATABASE_URL=postgres://localhost/schools_test yarn build -- -w & nodemon server",
+    "build": "webpack"
   },
   "dependencies": {
     "chai": "^4.1.2",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
     "pg": "^7.4.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "sequelize": "^4.38.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-stage-2": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-polyfill": "^6.26.0",
     "morgan": "^1.9.1",
-    "supertest": "^3.3.0"
+    "supertest": "^3.3.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }
