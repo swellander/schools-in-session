@@ -1,11 +1,9 @@
 import React from 'react';
-import Student from './Student';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-const SchoolDetail = (props) => {
-  console.log(props);
-  const { school } = props;
-  console.log(school);
+const SchoolDetail = ({ school }) => {
+  if (!school) return <Redirect to="/schools" />
   return (
     <div>
       <h2>{school.name}</h2>
