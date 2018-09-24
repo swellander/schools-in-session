@@ -8,10 +8,12 @@ const initialState = {
 const LOAD_STUDENTS = 'LOAD_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 
 const loadStudents = students => ({ type: LOAD_STUDENTS, students });
 const addStudent = student => ({ type: ADD_STUDENT, student });
 const deleteStudent = id => ({ type: DELETE_STUDENT, id });
+const updateStudent = student => ({ type: UPDATE_STUDENT, student });
 
 export const _loadStudents = () => dispatch => (
   axios.get('/api/students')
@@ -47,6 +49,16 @@ export const _deleteStudent = id => dispatch => {
       }
     })
 }
+export const _updateStudent = student => dispatch => (
+  axios.put('/api/students', student)
+    .then(response => response.data)
+    .then(updatedStudent => {
+      dispatch(updateStudent(updatedStudent))
+    })
+    .catch(err => {
+      throw err;
+    })
+)
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -57,6 +69,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, list: [...state.list, action.student] }
     case DELETE_STUDENT:
       return { ...state, list: state.list.filter(student => student.id !== action.id) }
+    case UPDATE_STUDENT:
+      const filteredList = state.list.filter(student => student.id !== action.student.id);
+      return { ...state, list: [...filteredList, action.student] }
     default:
       return state;
   }

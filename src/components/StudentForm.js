@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { _addStudent } from '../store/student';
+import { _updateStudent, _addStudent } from '../store/student';
 
-class NewStudentForm extends Component {
+class StudentForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,17 +14,23 @@ class NewStudentForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  componentDidMount() {
+    const { student } = this.props;
+    //check to see if component is being used to update or create
+    if (student) this.setState(student);
+  }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
-
   handleSubmit(e) {
     e.preventDefault();
-    this.props.create(this.state)
+    if (this.props.student) {
+      this.props.update(this.state);
+    } else {
+      this.props.create(this.state)
+    }
     this.props.history.push('/students');
   }
-
   render() {
     return (
       <div>
@@ -45,17 +51,24 @@ class NewStudentForm extends Component {
   }
 }
 
-const mapStateToProps = ({ schools }, { history }) => {
-  return {
+const mapStateToProps = ({ schools, students }, ownProps) => {
+  const { history, match } = ownProps;
+  let props = {
     schools: schools.list,
     history
   }
+  //check to see if form is being used to create or update
+  const { id } = match.params;
+  if (id) props = { ...props, student: students.list.find(student => student.id == id) }
+
+  return props;
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    create: student => dispatch(_addStudent(student))
+    create: student => dispatch(_addStudent(student)),
+    update: student => dispatch(_updateStudent(student))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewStudentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentForm);

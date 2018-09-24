@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { _deleteStudent } from '../store/student';
 
 const StudentDetail = ({ student, remove }) => {
@@ -9,6 +9,7 @@ const StudentDetail = ({ student, remove }) => {
     <div>
       <h2>{student.firstName} {student.lastName}</h2>
       <p><em>{student.gpa}</em></p>
+      <button><Link to={`/students/${student.id}/update`}>Update</Link></button>
       <button onClick={() => remove(student.id)}>Delete</button>
     </div>
   )

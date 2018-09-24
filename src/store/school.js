@@ -47,12 +47,12 @@ export const _deleteSchool = id => dispatch => (
 export const _updateSchool = school => dispatch => (
   axios.put(`/api/schools`, school)
     .then(response => response.data)
-    .then(school => {
-      dispatch(updateSchool(school));
+    .then(updatedSchool => {
+      dispatch(updateSchool(updatedSchool));
 
       //TODO: Yup, definitely gotta fix this
-      dispatch(_loadSchools());
-      dispatch(_loadStudents());
+      // dispatch(_loadSchools());
+      // dispatch(_loadStudents());
     })
     .catch(err => {
       throw err;
@@ -67,6 +67,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, list: [...state.list, action.school] }
     case DELETE_SCHOOL:
       return { ...state, list: state.list.filter(school => school.id !== action.id) }
+    case UPDATE_SCHOOL:
+      const filteredList = state.list.filter(school => school.id !== action.school.id);
+      return { ...state, list: [...filteredList, action.school] }
     default:
       return state;
   }
