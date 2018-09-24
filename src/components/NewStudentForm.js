@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { _addStudent } from '../store/student';
 
 class NewStudentForm extends Component {
   constructor() {
@@ -20,7 +21,8 @@ class NewStudentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.props.create(this.state)
+    this.props.history.push('/students');
   }
 
   render() {
@@ -43,10 +45,17 @@ class NewStudentForm extends Component {
   }
 }
 
-const mapStateToProps = ({ schools }) => {
+const mapStateToProps = ({ schools }, { history }) => {
   return {
-    schools: schools.list
+    schools: schools.list,
+    history
   }
 }
 
-export default connect(mapStateToProps)(NewStudentForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    create: student => dispatch(_addStudent(student))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewStudentForm);
