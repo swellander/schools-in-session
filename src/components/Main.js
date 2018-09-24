@@ -4,6 +4,7 @@ import Schools from './Schools';
 import SchoolDetail from './SchoolDetail';
 import Students from './Students';
 import StudentDetail from './StudentDetail';
+import NewStudentForm from './NewStudentForm';
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { _loadSchools, } from '../store/school';
@@ -22,7 +23,9 @@ class Main extends React.Component {
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
           <Route exact path="/schools" component={Schools} />
           <Route exact path="/students" component={Students} />
+          <Route path="/schools/create" component={StudentDetail} />
           <Route path="/schools/:id" component={SchoolDetail} />
+          <Route path="/students/create" component={NewStudentForm} />
           <Route path="/students/:id" component={StudentDetail} />
         </Switch>
       </div>

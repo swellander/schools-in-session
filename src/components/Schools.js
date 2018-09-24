@@ -11,6 +11,7 @@ class Schools extends React.Component {
             <School key={school.id} school={school} />
           ))}
         </ul>
+        <button>Create</button>
       </div>
     )
   }

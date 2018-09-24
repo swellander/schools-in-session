@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Student from './Student';
+import { Link } from 'react-router-dom';
 
 class Students extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class Students extends React.Component {
             <Student key={student.id} student={student} />
           ))}
         </ul>
+        <Link to="/students/create">Create</Link>
       </div>
     )
   }
