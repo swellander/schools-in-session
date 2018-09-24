@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { _deleteSchool } from '../store/school';
 
 const SchoolDetail = ({ school, remove }) => {
@@ -16,6 +16,7 @@ const SchoolDetail = ({ school, remove }) => {
           <li key={student.id}>{student.firstName + ' ' + student.lastName}</li>
         ))}
       </ul>
+      <button><Link to={`/schools/${school.id}/update`}>Update</Link></button>
       <button onClick={() => remove(school.id)}>Delete</button>
     </div>
   )

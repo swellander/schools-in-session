@@ -22,6 +22,19 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
+router.put('/', (req, res, next) => {
+  School.update(req.body, {
+    where: {
+      id: req.body.id
+    },
+    returning: true,
+    plain: true
+  })
+    .then(arr => arr[1])
+    .then(updatedSchool => res.json(updatedSchool))
+    .catch(next);
+})
+
 router.delete('/:id', (req, res, next) => {
   School.destroy({
     where: {
