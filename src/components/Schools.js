@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 class Schools extends React.Component {
   render() {
-    console.log("HEY")
     return (
       <div>
-        <h1>Schools</h1>
+        <ul>
+          {this.props.schools.map(school => (
+            <li key={school.id}>{school.name}</li>
+          ))}
+        </ul>
       </div>
     )
   }

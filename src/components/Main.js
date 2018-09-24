@@ -19,7 +19,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
           <Route path="/schools" component={Schools} />
-          {/* <Route path="/students" component={Students} /> */}
+          <Route path="/students" component={Students} />
         </Switch>
       </div>
     )
