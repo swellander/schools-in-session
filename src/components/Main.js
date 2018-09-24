@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Schools from './Schools';
+import SchoolDetail from './SchoolDetail';
 import Students from './Students';
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom';
@@ -18,8 +19,9 @@ class Main extends React.Component {
         <NavBar />
         <Switch>
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
-          <Route path="/schools" component={Schools} />
-          <Route path="/students" component={Students} />
+          <Route exact path="/schools" component={Schools} />
+          <Route exact path="/students" component={Students} />
+          <Route path="/schools/:id" component={SchoolDetail} />
         </Switch>
       </div>
     )
