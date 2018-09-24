@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Student from './Student';
 
 class Students extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Students extends React.Component {
       <div>
         <ul>
           {this.props.students.map(student => (
-            <li key={student.id}>{student.firstName}</li>
+            <Student key={student.id} student={student} />
           ))}
         </ul>
       </div>
