@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   Student.create(req.body, {
     include: [School]
   })
@@ -23,5 +22,17 @@ router.post('/', (req, res, next) => {
     ))
     .then(student => res.json(student))
     .catch(next);
+});
+
+router.delete('/:id', (req, res, next) => {
+  Student.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(status => {
+      if (status == 1) res.sendStatus(202);
+      else res.sendStatus(500)
+    })
 })
 module.exports = router;

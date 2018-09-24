@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
-import SchoolList from './Schools';
+import SchoolList from './SchoolList';
 import SchoolDetail from './SchoolDetail';
 import NewSchoolForm from './NewSchoolForm';
 import StudentList from './StudentList';

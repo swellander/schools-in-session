@@ -12,7 +12,7 @@ const SchoolDetail = ({ school }) => {
       <h3>Students</h3>
       <ul>
         {school.students.map(student => (
-          <li key={student.id}>{student.firstName}</li>
+          <li key={student.id}>{student.firstName + ' ' + student.lastName}</li>
         ))}
       </ul>
     </div>
