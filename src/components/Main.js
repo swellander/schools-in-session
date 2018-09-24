@@ -1,9 +1,9 @@
 import React from 'react';
 import NavBar from './NavBar';
-import Schools from './Schools';
+import SchoolList from './Schools';
 import SchoolDetail from './SchoolDetail';
 import NewSchoolForm from './NewSchoolForm';
-import Students from './Students';
+import StudentList from './StudentList';
 import StudentDetail from './StudentDetail';
 import NewStudentForm from './NewStudentForm';
 import { connect } from 'react-redux'
@@ -22,8 +22,8 @@ class Main extends React.Component {
         <NavBar />
         <Switch>
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
-          <Route exact path="/schools" component={Schools} />
-          <Route exact path="/students" component={Students} />
+          <Route exact path="/schools" component={SchoolList} />
+          <Route exact path="/students" component={StudentList} />
           <Route path="/schools/create" component={NewSchoolForm} />
           <Route path="/schools/:id" component={SchoolDetail} />
           <Route path="/students/create" component={NewStudentForm} />

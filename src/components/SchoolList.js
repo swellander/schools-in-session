@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import School from './School';
 
-class Schools extends React.Component {
+class SchoolList extends React.Component {
   render() {
     return (
       <div>
@@ -24,4 +24,4 @@ const mapStateToProps = ({ schools }) => {
   }
 }
 
-export default connect(mapStateToProps)(Schools);
+export default connect(mapStateToProps)(SchoolList);
