@@ -13,9 +13,10 @@ class SchoolForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+    const { school } = this.props;
     //check to see if component is being used to update or create
-    if (!prevProps.school && this.props.school) this.setState(this.props.school);
+    if (school) this.setState(school);
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
