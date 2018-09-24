@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { _loadStudents } from './student';
 
 const initialState = {
   list: []
@@ -34,7 +35,8 @@ export const _deleteSchool = id => dispatch => (
   axios.delete(`/api/schools/${id}`)
     .then(response => {
       if (response.status == 202) {
-        dispatch(deleteSchool(id))
+        dispatch(deleteSchool(id));
+        dispatch(_loadStudents());
       } else {
         throw new Error('school with that id does not exist')
       }

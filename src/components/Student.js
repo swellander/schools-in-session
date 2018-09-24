@@ -10,7 +10,7 @@ const Student = ({ student }) => {
         </Link>
       </h3>
       <p>
-        <em>{student.school.name}</em>
+        <em>{student.school ? student.school.name : 'No School'}</em>
       </p>
     </div>
   )
