@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import Schools from './Schools';
 import SchoolDetail from './SchoolDetail';
+import NewSchoolForm from './NewSchoolForm';
 import Students from './Students';
 import StudentDetail from './StudentDetail';
 import NewStudentForm from './NewStudentForm';
@@ -23,7 +24,7 @@ class Main extends React.Component {
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
           <Route exact path="/schools" component={Schools} />
           <Route exact path="/students" component={Students} />
-          <Route path="/schools/create" component={StudentDetail} />
+          <Route path="/schools/create" component={NewSchoolForm} />
           <Route path="/schools/:id" component={SchoolDetail} />
           <Route path="/students/create" component={NewStudentForm} />
           <Route path="/students/:id" component={StudentDetail} />

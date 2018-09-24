@@ -16,11 +16,11 @@ router.post('/', (req, res, next) => {
   })
     //TODO: /QUESTION: is there a way to do this in one fell swoop? 
     //rather than creating the student just to go back and find it again.
-    .then(student => {
-      return Student.findById(student.id, {
+    .then(student => (
+      Student.findById(student.id, {
         include: [School]
       })
-    })
+    ))
     .then(student => res.json(student))
     .catch(next);
 })

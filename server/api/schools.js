@@ -11,6 +11,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   School.create(req.body)
+    .then(school => (
+      School.findById(school.id, {
+        include: [Student]
+      })
+    ))
     .then(school => res.json(school))
     .catch(next);
 })

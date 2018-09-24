@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { _loadSchools } from './school';
 
 const initialState = {
   list: []
@@ -22,7 +23,13 @@ export const _loadStudents = () => dispatch => (
 export const _addStudent = student => dispatch => (
   axios.post('/api/students', student)
     .then(response => response.data)
-    .then(student => dispatch(addStudent(student)))
+    .then(student => {
+      dispatch(addStudent(student))
+
+      //TODO: QUESTION: figure out a different way to structure this
+      dispatch(_loadSchools()) //reload shcools to update their student lists
+
+    })
     .catch(err => {
       throw err;
     })
