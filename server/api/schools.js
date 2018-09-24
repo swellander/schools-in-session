@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const { School } = require('../db').models;
+const { School, Student } = require('../db').models;
 
 router.get('/', (req, res, next) => {
-  School.findAll()
+  School.findAll({
+    include: [Student]
+  })
     .then(schools => res.json(schools))
     .catch(next);
 });
