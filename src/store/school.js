@@ -6,9 +6,11 @@ const initialState = {
 
 const LOAD_SCHOOLS = 'LOAD_SCHOOLS';
 const ADD_SCHOOL = 'ADD_SCHOOL';
+const DELETE_SCHOOL = 'DELETE_SCHOOL';
 
 const loadSchools = schools => ({ type: LOAD_SCHOOLS, schools });
 const addSchool = school => ({ type: ADD_SCHOOL, school });
+const deleteSchool = id => ({ type: DELETE_SCHOOL, id })
 
 export const _loadSchools = () => dispatch => (
   axios.get('/api/schools')
@@ -28,6 +30,16 @@ export const _addSchool = school => dispatch => (
       throw err;
     })
 )
+export const _deleteSchool = id => dispatch => (
+  axios.delete(`/api/schools/${id}`)
+    .then(response => {
+      if (response.status == 202) {
+        dispatch(deleteSchool(id))
+      } else {
+        throw new Error('school with that id does not exist')
+      }
+    })
+)
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,6 +47,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, list: action.schools }
     case ADD_SCHOOL:
       return { ...state, list: [...state.list, action.school] }
+    case DELETE_SCHOOL:
+      return { ...state, list: state.list.filter(school => school.id !== action.id) }
     default:
       return state;
   }

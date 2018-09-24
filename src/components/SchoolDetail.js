@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { _deleteSchool } from '../store/school';
 
-const SchoolDetail = ({ school }) => {
+const SchoolDetail = ({ school, remove }) => {
   if (!school) return <Redirect to="/schools" />
   return (
     <div>
@@ -15,6 +16,7 @@ const SchoolDetail = ({ school }) => {
           <li key={student.id}>{student.firstName + ' ' + student.lastName}</li>
         ))}
       </ul>
+      <button onClick={() => remove(school.id)}>Delete</button>
     </div>
   )
 }
@@ -26,4 +28,13 @@ const mapStateToProps = ({ schools }, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(SchoolDetail);
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    remove: id => {
+      dispatch(_deleteSchool(id));
+      history.push('/schools');
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SchoolDetail);

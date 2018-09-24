@@ -34,5 +34,7 @@ router.delete('/:id', (req, res, next) => {
       if (status == 1) res.sendStatus(202);
       else res.sendStatus(500)
     })
-})
+    .catch(next);
+});
+
 module.exports = router;
