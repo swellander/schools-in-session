@@ -21,7 +21,6 @@ const SchoolDetail = ({ school }) => {
 
 const mapStateToProps = ({ schools }, ownProps) => {
   const { id } = ownProps.match.params;
-  console.log(schools.list.find(school => school.id == 1))
   return {
     school: schools.list.find(school => school.id == id)
   }
