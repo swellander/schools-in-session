@@ -51,8 +51,7 @@ export const _updateSchool = school => dispatch => (
       dispatch(updateSchool(updatedSchool));
 
       //TODO: Yup, definitely gotta fix this
-      // dispatch(_loadSchools());
-      // dispatch(_loadStudents());
+      dispatch(_loadStudents());
     })
     .catch(err => {
       throw err;

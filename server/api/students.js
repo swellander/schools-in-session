@@ -23,6 +23,25 @@ router.post('/', (req, res, next) => {
     .then(student => res.json(student))
     .catch(next);
 });
+router.put('/', (req, res, next) => {
+  //TODO: /QUESTION: is there a way to do this in one fell swoop? 
+  //rather than creating the student just to go back and find it again.
+  Student.update(req.body, {
+    where: {
+      id: req.body.id,
+    },
+    returning: true,
+    plain: true,
+  })
+    .then(arr => arr[1])
+    .then(updatedStudent => (
+      Student.findById(updatedStudent.id, {
+        include: [School]
+      })
+    ))
+    .then(updatedStudent => res.json(updatedStudent))
+    .catch(next);
+})
 
 router.delete('/:id', (req, res, next) => {
   Student.destroy({

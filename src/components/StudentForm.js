@@ -9,7 +9,7 @@ class StudentForm extends Component {
       firstName: '',
       lastName: '',
       gpa: '',
-      schoolId: 0
+      schoolId: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,10 +38,14 @@ class StudentForm extends Component {
           <input onChange={this.handleChange} placeholder="First Name" type="text" name="firstName" value={this.state.firstName} />
           <input onChange={this.handleChange} placeholder="Last Name" type="text" name="lastName" value={this.state.lastName} />
           <input onChange={this.handleChange} placeholder="GPA" type="text" name="gpa" value={this.state.gpa} />
-          <select name="schoolId" onChange={this.handleChange}>
+          <select value={this.props.schoolId} name="schoolId" onChange={this.handleChange}>
             <option>School</option>
             {this.props.schools.map(school => (
-              <option value={school.id} key={school.id}>{school.name}</option>
+              <option
+                value={school.id}
+                key={school.id}>
+                {school.name}
+              </option>
             ))}
           </select>
           <button>Create</button>
