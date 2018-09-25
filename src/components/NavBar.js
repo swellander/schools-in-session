@@ -1,15 +1,28 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Button, Typeography, AppBar, Toolbar, Typography } from '@material-ui/core/';
 
 class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <NavLink to="/"><h1>Schooled</h1></NavLink>
-        <NavLink to="/schools">Schools: {this.props.schools.list.length}</NavLink>
-        <br></br>
-        <NavLink to="/students">Students: {this.props.students.list.length}</NavLink>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography varient="title" color="inherit">
+              <NavLink to="/"><h1>Schooled</h1></NavLink>
+            </Typography>
+
+            <NavLink to="/students">
+              <Button>Students ({this.props.students.list.length})</Button>
+            </NavLink>
+
+            <NavLink to="/schools">
+              <Button>Schools ({this.props.schools.list.length})</Button>
+            </NavLink>
+
+          </Toolbar>
+        </AppBar>
       </div>
     )
   }
