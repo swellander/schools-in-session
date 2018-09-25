@@ -1,25 +1,32 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Typeography, AppBar, Toolbar, Typography } from '@material-ui/core/';
+import { Tab, Tabs, Button, Typeography, AppBar, Toolbar, Typography } from '@material-ui/core/';
 
 class NavBar extends React.Component {
   render() {
+    const styles = {
+      appBar: {
+        flexWrap: 'wrap'
+      }
+    }
     return (
       <div>
         <AppBar position="static">
-          <Toolbar>
-            <Typography varient="title" color="inherit">
-              <NavLink to="/"><h1>Schooled</h1></NavLink>
-            </Typography>
+          {/* <Tabs>
+            <Tab to="/schools" component={Link}>Schools</Tab>
+            <Tab>Students</Tab>
+          </Tabs> */}
+          <Toolbar> <Typography varient="title" color="inherit">
+          </Typography>
 
-            <NavLink to="/students">
-              <Button>Students ({this.props.students.list.length})</Button>
-            </NavLink>
+            <Button to="/students" component={Link}>
+              Students ({this.props.students.list.length})
+            </Button>
 
-            <NavLink to="/schools">
-              <Button>Schools ({this.props.schools.list.length})</Button>
-            </NavLink>
+            <Button to="/schools" component={Link}>
+              Schools ({this.props.schools.list.length})
+            </Button>
 
           </Toolbar>
         </AppBar>

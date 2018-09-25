@@ -1,19 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Grid, CardContent, Card, CardActionArea, CardMedia, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-const School = ({ school }) => {
+const School = ({ school, classes }) => {
   return (
-    <div>
-      <h3>
-        <Link to={`/schools/${school.id}`}>
-          {school.name}
-        </Link>
-      </h3>
-      <p>
-        <em>{school.students.length}</em>
-      </p>
-    </div>
+    <Grid item xs={12} lg={3}>
+      <Card className={classes.card}>
+        <CardActionArea className={classes.action}>
+          <CardMedia
+            className={classes.media}
+            image="http://lorempixel.com/400/200"
+          />
+          <CardContent>
+            <Typography component={Link} to={`/schools/${school.id}`}>
+              {school.name}
+            </Typography>
+            <p>
+              <em>{school.students.length}</em>
+            </p>
+          </CardContent>
+        </CardActionArea>
+      </Card >
+    </Grid>
   )
 }
 
-export default School;
+const styles = {
+  card: {
+    width: '20vw',
+  },
+  media: {
+    height: 140,
+  },
+  action: {
+    width: '100%'
+  }
+};
+
+export default withStyles(styles)(School);
