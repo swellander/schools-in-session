@@ -27,11 +27,10 @@ class SchoolForm extends Component {
     //either update or create
     if (this.props.school) {
       this.props.update(this.state);
-      this.props.history.push('/schools')
     } else {
       this.props.create(this.state);
-      this.props.history.push('/students');
     }
+    this.props.history.push('/schools')
   }
   render() {
     return (
