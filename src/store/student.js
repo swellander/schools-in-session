@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { _loadSchools } from './school';
 
+
 const initialState = {
   list: []
 }
@@ -9,6 +10,7 @@ const LOAD_STUDENTS = 'LOAD_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const DELETE_SCHOOL = 'DELETE_SCHOOL';
 
 const loadStudents = students => ({ type: LOAD_STUDENTS, students });
 const addStudent = student => ({ type: ADD_STUDENT, student });
@@ -72,6 +74,12 @@ const reducer = (state = initialState, action) => {
     case UPDATE_STUDENT:
       const filteredList = state.list.filter(student => student.id !== action.student.id);
       return { ...state, list: [...filteredList, action.student] }
+    case DELETE_SCHOOL:
+      const updatedStudents = state.list.map(student => {
+        if (student.schoolId == action.id) return { ...student, schoolId: null }
+        return student
+      });
+      return { ...state, list: updatedStudents }
     default:
       return state;
   }

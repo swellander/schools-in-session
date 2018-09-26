@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 class StudentList extends React.Component {
   render() {
+    console.log('this should be called')
     return (
       <div>
         <ul>
