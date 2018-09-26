@@ -8,6 +8,7 @@
 - [ ] find a way to do this: https://stackoverflow.com/questions/21733847/react-jsx-selecting-selected-on-selected-select-option
 - [ ] figure out a way to connect schools and students (and viceversa) on client, rather than connecting them twice(redundantly) on server (src/store/school.js 53:7)
 - [ ] get rid up underlines in students table
+- [ ] fix warnings
 
 
 ## Ideas to fill extra time
@@ -16,4 +17,5 @@
 3. Add a "Create Random Student" function that uses https://randomuser.me/.
 4. Search feature for longer student lists.
 5. Buttons to order student by each column.
+6. Standardize styles.
 
