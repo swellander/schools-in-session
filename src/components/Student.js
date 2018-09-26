@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TableRow, TableCell } from '@material-ui/core';
 
 const Student = ({ student }) => {
   return (
-    <div>
-      <h3>
-        <Link to={`/students/${student.id}`}>
-          {student.firstName}
-        </Link>
-      </h3>
-      <p>
-        <em>{student.school ? student.school.name : 'No School'}</em>
-      </p>
-    </div>
+    <TableRow hover={true} to={`/students/${student.id}`} component={Link}>
+      <TableCell>
+        {student.firstName}
+      </TableCell>
+      <TableCell>
+        {student.lastName}
+      </TableCell>
+      <TableCell>
+        {student.gpa}
+      </TableCell>
+      <TableCell>
+        {student.school.name}
+      </TableCell>
+    </TableRow>
   )
 }
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import School from './School';
 import { Grid, Button, } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+
 class SchoolList extends React.Component {
   render() {
     const styles = {
