@@ -3,7 +3,7 @@ import StudentTable from './StudentTable';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { _deleteSchool } from '../store/school';
-import { Paper, Grid, Table, TableHead, TableRow, TableCell } from '@material-ui/core';
+import { Paper, Grid, Button } from '@material-ui/core';
 
 const SchoolDetail = ({ students, school, remove }) => {
   const styles = {
@@ -12,7 +12,9 @@ const SchoolDetail = ({ students, school, remove }) => {
   const containerStyles = {
     marginTop: 40
   }
-
+  const btnStyles = {
+    marginTop: 18
+  }
 
   if (!school) return <Redirect to="/schools" />
   return (
@@ -21,24 +23,27 @@ const SchoolDetail = ({ students, school, remove }) => {
         <Grid item xs={7}>
           <Paper>
             <div style={styles}>
-              <h2>{school.name}</h2>
+              <Grid container>
+                <Grid item xs={9}>
+                  <h2>{school.name}</h2>
+                </Grid>
+                <Grid item xs={3}>
+                  <div style={btnStyles}>
+                    <Button variant="contained" color="primary"><Link to={`/schools/${school.id}/update`}>Update</Link></Button>
+                    <Button variant="contained" color="secondary" onClick={() => remove(school.id)}>Delete</Button>
+                  </div>
+                </Grid>
+              </Grid>
               <p><em>{school.address}</em></p>
               <p>{school.description}</p>
               <h3>Students</h3>
-              {/* <ul>
-              {school.students.map(student => (
-                <li key={student.id}>{student.firstName + ' ' + student.lastName}</li>
-              ))}
-            </ul> */}
               <StudentTable students={students} />
-              {/* <button><Link to={`/schools/${school.id}/update`}>Update</Link></button>
-            <button onClick={() => remove(school.id)}>Delete</button> */}
             </div>
 
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </div >
   )
 }
 
