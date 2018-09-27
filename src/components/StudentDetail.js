@@ -16,6 +16,7 @@ const StudentDetail = ({ student, remove }) => {
   }
   return (
     <div style={styles}>
+
       <Grid justify="center" container>
         <Grid item xs={4}>
           <Paper>
