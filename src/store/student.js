@@ -67,8 +67,7 @@ const reducer = (state = initialState, action) => {
     case LOAD_STUDENTS:
       return { ...state, list: action.students }
     case ADD_STUDENT:
-      console.log('STUDDD', action.student)
-      return { ...state, list: [...state.list, action.student] }
+      return { ...state, list: [action.student, ...state.list] }
     case DELETE_STUDENT:
       return { ...state, list: state.list.filter(student => student.id !== action.id) }
     case UPDATE_STUDENT:
