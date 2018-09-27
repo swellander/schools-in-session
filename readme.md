@@ -4,7 +4,7 @@
 - [ ] add babel stage-2 plugin
 - [x] rename Schools.js component to SchoolList.js
 - [x] add automatic capitalization of names (getter)
-- [ ] go to update a school/student. once at update form with pre-populated data, refresh the page. Fix that bug.
+- [x] go to update a school/student. once at update form with pre-populated data, refresh the page. Fix that bug.
 - [ ] find a way to do this: https://stackoverflow.com/questions/21733847/react-jsx-selecting-selected-on-selected-select-option
 - [ ] figure out a way to connect schools and students (and viceversa) on client, rather than connecting them twice(redundantly) on server (src/store/school.js 53:7)
 - [ ] get rid of all underlines from react-router-dom styling
