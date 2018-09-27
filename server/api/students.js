@@ -6,10 +6,14 @@ router.get('/', (req, res, next) => {
     include: [School]
   })
     .then(students => res.json(students))
-    .catch(next);
+    .catch(err => {
+      console.log(err);
+      next();
+    });
 })
 
 router.post('/', (req, res, next) => {
+  console.log(req.body);
   Student.create(req.body, {
     include: [School]
   })
@@ -20,7 +24,10 @@ router.post('/', (req, res, next) => {
         include: [School]
       })
     ))
-    .then(student => res.json(student))
+    .then(student => {
+      console.log(student)
+      res.json(student)
+    })
     .catch(next);
 });
 router.put('/', (req, res, next) => {

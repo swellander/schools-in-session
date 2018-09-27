@@ -19,17 +19,22 @@ const Student = db.define('student', {
     get() {
       let name = this.getDataValue('firstName')
       return name.charAt(0).toUpperCase() + name.slice(1);
-    }
+    },
+    defualtValue: 'nick'
   },
   lastName: {
     type: Sequelize.STRING,
     get() {
       let name = this.getDataValue('lastName')
       return name.charAt(0).toUpperCase() + name.slice(1);
-    }
+    },
+    defualtValue: 'cage'
   },
   gpa: Sequelize.FLOAT,
-  imageUrl: Sequelize.STRING
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SX425_.jpg'
+  }
 });
 
 //ASSOCIATIONS

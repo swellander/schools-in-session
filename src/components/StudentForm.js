@@ -11,8 +11,7 @@ class StudentForm extends Component {
       firstName: '',
       lastName: '',
       gpa: '',
-      schoolId: '',
-      imageUrl: ''
+      schoolId: 'starting',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +32,7 @@ class StudentForm extends Component {
     } else {
       this.props.create(this.state)
     }
-    this.props.history.push('/students/${this.state}');
+    this.props.history.push(`/students`);
   }
   render() {
     const avatarStyles = {
@@ -103,13 +102,14 @@ class StudentForm extends Component {
 
                   <Grid align="center" item xs={7}>
                     <Select
+                      autoWidth={false}
                       name="schoolId"
                       value={this.state.schoolId}
                       onChange={this.handleChange}
                       label="School"
                     >
-                      <MenuItem value="">
-                        <em>None</em>
+                      <MenuItem value="starting">
+                        <em>School</em>
                       </MenuItem>
                       {this.props.schools.map(school => (
                         <MenuItem
