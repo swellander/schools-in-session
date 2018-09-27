@@ -1,3 +1,29 @@
+const axios = require('axios');
+const { db } = require('./index');
+const { School, Student } = require('./index').models;
+
+//helper functions
+const generateRandomGPA = () => {
+  const gpa = (Math.random() * 4).toFixed(1);
+  if (gpa.length == 1) gpa += '.0';
+  return Number(gpa);
+}
+const generateRandomSchoolId = () => Math.ceil(Math.random() * schools.length);
+
+const syncSeed = async (schools, students) => {
+  try {
+    await db.sync({ force: true })
+    const [washington, mvhs, laventure] = await Promise.all(schools.map(school => (
+      School.create(school)
+    )));
+    await Promise.all(students.map(student => (
+      Student.create(student)
+    )));
+  } catch (err) {
+    throw err;
+  }
+}
+
 const schools = [
   {
     name: 'Washington',
@@ -20,25 +46,26 @@ const schools = [
   }
 ];
 
-const students = [
-  {
-    firstName: 'John',
-    lastName: 'Dunn',
-    gpa: 4.12
-  },
-  {
-    firstName: 'J.J.',
-    lastName: 'Pino',
-    gpa: 3.2
-  },
-  {
-    firstName: 'Madeline',
-    lastName: 'Loy',
-    gpa: 3.8
-  }
-]
+let students;
 
-module.exports = {
-  schools,
-  students
-}
+axios.get('https://randomuser.me/api/?results=100&inc=name,picture')
+  .then(response => response.data.results)
+  .then(users => {
+    students = users.map(user => (
+      {
+        firstName: user.name.first,
+        lastName: user.name.last,
+        gpa: generateRandomGPA(),
+        schoolId: generateRandomSchoolId(),
+        imageUrl: user.picture.large
+      }
+    ));
+
+    //sync db with successfully grabbed data
+    syncSeed(schools, students);
+  })
+  .then(() => console.log("DB has been seeded."))
+  .catch(err => console.log(err))
+
+
+

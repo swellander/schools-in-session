@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/schools_test', { logging: false });
-const { students, schools } = require('./seed');
 
 const School = db.define('school', {
   name: {
@@ -17,32 +16,17 @@ const School = db.define('school', {
 const Student = db.define('student', {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
-  gpa: Sequelize.FLOAT
+  gpa: Sequelize.FLOAT,
+  imageUrl: Sequelize.STRING
 });
 
 //ASSOCIATIONS
 Student.belongsTo(School);
 School.hasMany(Student);
 
-const syncSeed = async () => {
-  try {
-    await db.sync({ force: true })
-    const [washington, mvhs, laventure] = await Promise.all(schools.map(school => (
-      School.create(school)
-    )));
-    const [john, jj, madeline] = await Promise.all(students.map(student => (
-      Student.create(student)
-    )));
-    await john.setSchool(laventure);
-    await jj.setSchool(washington);
-    await madeline.setSchool(mvhs);
-  } catch (err) {
-    throw err;
-  }
-}
 
 module.exports = {
-  syncSeed,
+  db,
   models: {
     School,
     Student

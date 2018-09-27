@@ -1,3 +1,5 @@
+//TODO: rewrite to work with new seed data
+
 const expect = require('chai').expect;
 const db = require('./index');
 const { Student, School } = db.models;

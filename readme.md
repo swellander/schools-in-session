@@ -9,7 +9,8 @@
 - [ ] figure out a way to connect schools and students (and viceversa) on client, rather than connecting them twice(redundantly) on server (src/store/school.js 53:7)
 - [ ] get rid of all underlines
 - [ ] fix warnings
-- [ ] delete a school, then navigate to a school-detail. fix that bug. 
+- [ ] delete a school, then navigate to a school-detail. fix that bug 
+- [ ] fix whole number gpa issue
 
 
 ## Ideas to fill extra time

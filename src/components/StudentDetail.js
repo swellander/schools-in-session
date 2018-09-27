@@ -8,6 +8,7 @@ const StudentDetail = ({ student, remove }) => {
   return (
     <div>
       <h2>{student.firstName} {student.lastName}</h2>
+      <img src={student.imageUrl} />
       <p><em>{student.gpa}</em></p>
       <button><Link to={`/students/${student.id}/update`}>Update</Link></button>
       <button onClick={() => remove(student.id)}>Delete</button>
