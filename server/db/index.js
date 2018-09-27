@@ -10,6 +10,9 @@ const School = db.define('school', {
   },
   description: {
     type: Sequelize.TEXT,
+  },
+  imageUrl: {
+    type: Sequelize.STRING
   }
 });
 

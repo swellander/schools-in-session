@@ -12,7 +12,7 @@ class School extends React.Component {
           <CardActionArea component={Link} to={`/schools/${school.id}`} className={classes.card} className={classes.action}>
             <CardMedia
               className={classes.media}
-              image="http://lorempixel.com/400/200"
+              image={school.imageUrl}
             />
             <CardContent>
               <Typography>
