@@ -13,7 +13,7 @@ const SchoolDetail = ({ students, school, remove }) => {
     marginTop: 40
   }
   const btnStyles = {
-    marginTop: 18
+    marginTop: 6
   }
 
   if (!school) return <Redirect to="/schools" />
@@ -29,7 +29,7 @@ const SchoolDetail = ({ students, school, remove }) => {
                 </Grid>
                 <Grid item xs={3}>
                   <div style={btnStyles}>
-                    <Button variant="contained" color="primary"><Link to={`/schools/${school.id}/update`}>Update</Link></Button>
+                    <Button to={`/schools/${school.id}/update`} component={Link} variant="contained" color="primary">Update</Button>
                     <Button variant="contained" color="secondary" onClick={() => remove(school.id)}>Delete</Button>
                   </div>
                 </Grid>
