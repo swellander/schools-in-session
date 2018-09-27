@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { _updateSchool, _addSchool } from '../store/school';
-import { Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
+import { TextField, Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class SchoolForm extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       name: '',
       address: '',
       description: ''
@@ -29,6 +31,7 @@ class SchoolForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    alert('submitting')
     //either update or create
     if (this.props.school) {
       this.props.update(this.state);
@@ -47,6 +50,7 @@ class SchoolForm extends Component {
     const btnStyles = {
       marginTop: 18
     }
+    console.log(this.state);
     return (
       // <div>
       //   <form onSubmit={this.handleSubmit}>
@@ -61,30 +65,45 @@ class SchoolForm extends Component {
           <Grid item xs={7}>
             <Paper>
               <div style={styles}>
-                <Grid container>
-                  <Grid item xs={9}>
-                    <Typography variant="display2">{school.name}</Typography>
+                <form onSubmit={this.handleSubmit}>
+                  <Grid container>
+                    <Grid item xs={9}>
+                      <TextField
+                        label="Name"
+                        value={this.state.name}
+                        onChange={this.handleChange}
+                        name="name"
+                      />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <div style={btnStyles}>
+                        <Button type="submit" variant="contained" color="primary">Save</Button>
+                        <Button variant="contained" color="secondary" onClick={() => remove(this.state.id)}>Delete</Button>
+                      </div>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={3}>
-                    <div style={btnStyles}>
-                      <Button variant="contained" color="primary"><Link to={`/schools/${school.id}/update`}>Update</Link></Button>
-                      <Button variant="contained" color="secondary" onClick={() => remove(school.id)}>Delete</Button>
-                    </div>
-                  </Grid>
-                </Grid>
 
-                <Typography variant="caption">
-                  <p><em>{school.address}</em></p>
-                </Typography>
+                  <TextField
+                    name="address"
+                    label="Address"
+                    value={this.state.address}
+                    onChange={this.handleChange}
+                  />
 
-                <Typography>
-                  <p>{school.description}</p>
-                </Typography>
+                  <TextField
+                    multiline
+                    fullWidth={true}
+                    label="Description"
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.handleChange}
+                  />
+                </form>
               </div>
 
             </Paper>
           </Grid>
-        </Grid>
+        </Grid >
       </div >
     )
   }
