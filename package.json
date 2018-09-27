@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
-    "dev": "DATABASE_URL=postgres://localhost/schools_test yarn build -- -w & nodemon server",
+    "dev": "DATABASE_URL=postgres://localhost/schools_test yarn build -- -w & nodemon server --ignore src --ignore public",
     "seed": "node server/db/seed.js",
     "build": "webpack"
   },

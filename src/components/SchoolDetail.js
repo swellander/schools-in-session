@@ -3,7 +3,7 @@ import StudentTable from './StudentTable';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { _deleteSchool } from '../store/school';
-import { Paper, Grid, Button } from '@material-ui/core';
+import { Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
 
 const SchoolDetail = ({ students, school, remove }) => {
   const styles = {
@@ -25,7 +25,7 @@ const SchoolDetail = ({ students, school, remove }) => {
             <div style={styles}>
               <Grid container>
                 <Grid item xs={9}>
-                  <h2>{school.name}</h2>
+                  <Typography variant="display2">{school.name}</Typography>
                 </Grid>
                 <Grid item xs={3}>
                   <div style={btnStyles}>
@@ -34,9 +34,21 @@ const SchoolDetail = ({ students, school, remove }) => {
                   </div>
                 </Grid>
               </Grid>
-              <p><em>{school.address}</em></p>
-              <p>{school.description}</p>
-              <h3>Students</h3>
+
+              <Typography variant="caption">
+                <p><em>{school.address}</em></p>
+              </Typography>
+
+              <Typography>
+                <p>{school.description}</p>
+              </Typography>
+
+              <Typography variant="headline">
+                Students
+              </Typography>
+              <Divider />
+              <br />
+
               <StudentTable students={students} />
             </div>
 

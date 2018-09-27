@@ -48,7 +48,7 @@ const schools = [
 
 let students;
 
-axios.get('https://randomuser.me/api/?results=100&inc=name,picture')
+axios.get('https://randomuser.me/api/?results=100&inc=name')
   .then(response => response.data.results)
   .then(users => {
     students = users.map(user => (
@@ -57,7 +57,7 @@ axios.get('https://randomuser.me/api/?results=100&inc=name,picture')
         lastName: user.name.last,
         gpa: generateRandomGPA(),
         schoolId: generateRandomSchoolId(),
-        imageUrl: user.picture.large
+        imageUrl: "https://api.adorable.io/avatars/149/" + user.name.last + ".png"
       }
     ));
 
