@@ -14,8 +14,20 @@ const School = db.define('school', {
 });
 
 const Student = db.define('student', {
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
+  firstName: {
+    type: Sequelize.STRING,
+    get() {
+      let name = this.getDataValue('firstName')
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    get() {
+      let name = this.getDataValue('lastName')
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+  },
   gpa: Sequelize.FLOAT,
   imageUrl: Sequelize.STRING
 });
