@@ -6,6 +6,7 @@ const StudentTable = (props) => {
   const tableStyles = {
     width: '100%',
     overflowX: 'auto',
+    textDecoration: 'none'
   }
   return (
     <Table style={tableStyles}>
@@ -14,6 +15,8 @@ const StudentTable = (props) => {
           <TableCell>First Name</TableCell>
           <TableCell>Last Name</TableCell>
           <TableCell>G.P.A</TableCell>
+
+          {/* check if current view is school detail (omit school column of table), or student detail (keep school column) */}
           {props.detail ? '' : <TableCell>School</TableCell>}
         </TableRow>
       </TableHead>
