@@ -33,11 +33,18 @@ const Student = db.define('student', {
     },
     defualtValue: 'cage'
   },
-  gpa: Sequelize.FLOAT,
+  gpa: {
+    type: Sequelize.FLOAT,
+    get(gpa) {
+      let strNum = String(this.getDataValue(gpa))
+      if (strNum.length === 1) strNum += '.0';
+      return strNum;
+    }
+  },
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue: 'https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SX425_.jpg'
-  }
+  },
 });
 
 //ASSOCIATIONS

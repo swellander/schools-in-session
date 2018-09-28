@@ -85,6 +85,7 @@ const StudentDetail = ({ student, remove }) => {
 
 const mapStateToProps = ({ students }, ownProps) => {
   const { id } = ownProps.match.params;
+  console.log(ownProps);
   return {
     student: students.list.find(student => student.id == id),
   }

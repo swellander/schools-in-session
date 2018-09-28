@@ -8,10 +8,11 @@
 - [ ] find a way to do this: https://stackoverflow.com/questions/21733847/react-jsx-selecting-selected-on-selected-select-option
 - [ ] figure out a way to connect schools and students (and viceversa) on client, rather than connecting them twice(redundantly) on server (src/store/school.js 53:7)
 - [ ] get rid of all underlines from react-router-dom styling
-- [ ] fix warnings
-- [ ] delete a school, then navigate to a school-detail. fix that bug 
-- [ ] fix whole number gpa issue
-- [ ] remove school column table on school detail page.
+- [ ] fix warnings (ask a fell0w)
+- [x] delete a school, then navigate to a school-detail. fix that bug 
+- [x] fix whole number gpa issue
+- [ ] remove school column table on school detail page
+- [ ] emphasize nav button of current view
 
 
 ## Ideas to fill extra time
@@ -22,4 +23,5 @@
 5. Buttons to order student by each column.
 6. Standardize styles.
 7. Make responsive.
+8. Store images on AWS
 

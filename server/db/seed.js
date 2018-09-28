@@ -7,7 +7,6 @@ const { School, Student } = require('./index').models;
 //helper functions
 const generateRandomGPA = () => {
   const gpa = (Math.random() * 4).toFixed(1);
-  if (gpa.length == 1) gpa += '.0';
   return Number(gpa);
 }
 const generateRandomSchoolId = () => Math.ceil(Math.random() * schools.length);
@@ -71,6 +70,3 @@ axios.get('https://randomuser.me/api/?results=100&inc=name')
   })
   .then(() => console.log("DB has been seeded."))
   .catch(err => console.log(err))
-
-
-
