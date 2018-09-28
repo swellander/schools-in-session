@@ -66,7 +66,10 @@ axios.get('https://randomuser.me/api/?results=100&inc=name')
     ));
 
     //sync db with successfully grabbed data
-    syncSeed(schools, students);
+    return syncSeed(schools, students);
   })
-  .then(() => console.log("DB has been seeded."))
+  .then(() => {
+    console.log("DB has been seeded.")
+    db.close()
+  })
   .catch(err => console.log(err))
