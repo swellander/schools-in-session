@@ -12,8 +12,8 @@
 - [x] delete a school, then navigate to a school-detail. fix that bug 
 - [x] fix whole number gpa issue
 - [x] remove school column table on school detail page
-- [ ] emphasize nav button of current view
-- [ ] disconnect sequelize after seed file
+- [x] emphasize nav button of current view
+- [x] disconnect sequelize after seed file
 - [x] after update, redirect to detail view
 
 

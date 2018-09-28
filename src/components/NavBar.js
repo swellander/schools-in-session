@@ -4,6 +4,17 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, Button, Typeography, AppBar, Toolbar, Typography } from '@material-ui/core/';
 
 class NavBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: 0
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(evt, value) {
+    this.setState({ value })
+  }
+
   render() {
     const styles = {
       appBar: {
@@ -17,20 +28,30 @@ class NavBar extends React.Component {
             <Tab to="/schools" component={Link}>Schools</Tab>
             <Tab>Students</Tab>
           </Tabs> */}
-          <Toolbar> <Typography varient="title" color="inherit">
+          {/* <Toolbar> <Typography varient="title" color="inherit">
           </Typography>
 
-            <Button to="/students" component={Link}>
+            <Button color="default" to="/students" component={Link}>
               Students ({this.props.students.list.length})
             </Button>
 
-            <Button to="/schools" component={Link}>
+            <Button color="default" to="/schools" component={Link}>
               Schools ({this.props.schools.list.length})
-            </Button>
+            </Button> */}
 
-          </Toolbar>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="secondary"
+            centered
+          >
+            <Tab to="/schools" component={Link} label="schools" />
+            <Tab to="/students" component={Link} label="students" />
+          </Tabs>
+
+          {/* </Toolbar> */}
         </AppBar>
-      </div>
+      </div >
     )
   }
 }
