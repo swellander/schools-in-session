@@ -11,8 +11,10 @@
 - [ ] fix warnings (ask a fell0w)
 - [x] delete a school, then navigate to a school-detail. fix that bug 
 - [x] fix whole number gpa issue
-- [ ] remove school column table on school detail page
+- [x] remove school column table on school detail page
 - [ ] emphasize nav button of current view
+- [ ] disconnect sequelize after seed file
+- [x] after update, redirect to detail view
 
 
 ## Ideas to fill extra time

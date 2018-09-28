@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TableRow, TableCell } from '@material-ui/core';
 
-const Student = ({ student }) => {
+const Student = ({ student, detail }) => {
   return (
     <TableRow hover={true} to={`/students/${student.id}`} component={Link}>
       <TableCell>
@@ -14,9 +14,11 @@ const Student = ({ student }) => {
       <TableCell>
         {student.gpa}
       </TableCell>
-      <TableCell>
-        {student.school.name}
-      </TableCell>
+      {detail ? '' :
+        <TableCell>
+          {student.school.name}
+        </TableCell>
+      }
     </TableRow>
   )
 }

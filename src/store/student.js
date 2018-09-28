@@ -40,7 +40,6 @@ export const _addStudent = student => dispatch => (
     })
 )
 export const _deleteStudent = id => dispatch => {
-  console.log('this is hit')
   return axios.delete(`/api/students/${id}`)
     .then(response => {
       if (response.status == 202) {

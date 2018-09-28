@@ -2,7 +2,7 @@ import React from 'react';
 import Student from './Student';
 import { Table, TableHead, TableRow, TableCell } from '@material-ui/core'
 
-const StudentTable = ({ students }) => {
+const StudentTable = (props) => {
   const tableStyles = {
     width: '100%',
     overflowX: 'auto',
@@ -14,11 +14,11 @@ const StudentTable = ({ students }) => {
           <TableCell>First Name</TableCell>
           <TableCell>Last Name</TableCell>
           <TableCell>G.P.A</TableCell>
-          <TableCell>School</TableCell>
+          {props.detail ? '' : <TableCell>School</TableCell>}
         </TableRow>
       </TableHead>
-      {students.map(student => (
-        <Student key={student.id} student={student} />
+      {props.students.map(student => (
+        <Student key={student.id} detail={props.detail} student={student} />
       ))}
     </Table>
   )

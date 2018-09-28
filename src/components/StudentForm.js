@@ -23,7 +23,6 @@ class StudentForm extends Component {
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-    console.log(e.target.value)
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -43,7 +42,6 @@ class StudentForm extends Component {
     const styles = {
       marginTop: '10vh'
     }
-    console.log(this.state);
     return (
       <div style={styles}>
         <Grid justify="center" container>

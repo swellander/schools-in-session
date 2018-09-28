@@ -30,15 +30,13 @@ class SchoolForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-
-    alert('submitting')
     //either update or create
     if (this.props.school) {
       this.props.update(this.state);
     } else {
       this.props.create(this.state);
     }
-    this.props.history.push('/schools')
+    this.props.history.push(`/schools/${this.state.id}`)
   }
   render() {
     const styles = {
@@ -50,16 +48,7 @@ class SchoolForm extends Component {
     const btnStyles = {
       marginTop: 18
     }
-    console.log(this.state);
     return (
-      // <div>
-      //   <form onSubmit={this.handleSubmit}>
-      //     <input onChange={this.handleChange} placeholder="Name" type="text" name="name" value={this.state.name} />
-      //     <input onChange={this.handleChange} placeholder="Address" type="text" name="address" value={this.state.address} />
-      //     <textarea rows="7" columns="40" onChange={this.handleChange} placeholder="Description" type="text" name="description" value={this.state.description} />
-      //     <button>Create</button>
-      //   </form>
-      // </div>
       <div style={containerStyles}>
         <Grid container justify="center">
           <Grid item xs={7}>

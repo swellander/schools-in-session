@@ -16,8 +16,6 @@ const SchoolDetail = ({ students, school, remove }) => {
     marginTop: 6
   }
 
-  console.log(school)
-
   if (!school) return <Redirect to="/schools" />
   return (
     <div style={containerStyles}>
@@ -51,7 +49,7 @@ const SchoolDetail = ({ students, school, remove }) => {
               <Divider />
               <br />
 
-              <StudentTable students={students} />
+              <StudentTable detail={true} students={students} />
             </div>
 
           </Paper>
@@ -62,10 +60,6 @@ const SchoolDetail = ({ students, school, remove }) => {
 }
 
 const mapStateToProps = ({ schools, students }, ownProps) => {
-  console.log(
-    'Yo',
-    ownProps
-  )
   const { id } = ownProps.match.params;
   return {
     school: schools.list.find(school => school.id == id),
