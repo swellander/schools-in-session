@@ -16,6 +16,7 @@
 - [x] disconnect sequelize after seed file
 - [x] after update, redirect to detail view
 - [x] fix nav tab on refresh bug
+- [ ] fix route testing
 
 
 ## Ideas to fill extra time

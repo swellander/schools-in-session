@@ -40,7 +40,7 @@ describe('Integrated api', () => {
     })
   })
 
-  describe('/api/students', () => {
+  xdescribe('/api/students', () => {
     it('can get', () => {
       return app.get('/api/students')
         .expect(200)
@@ -72,5 +72,22 @@ describe('Integrated api', () => {
             })
         })
     })
+  });
+
+  describe('Authentication', () => {
+    it('has an auth route', () => (
+      app.post('/api/auth')
+        .send({ userName: 'john', password: 'dunn' })
+        .then(response => {
+          const token = response.body.token;
+          expect(token).to.be.ok;
+          return app.get('/api/auth')
+            .set('authorization', token)
+            .expect(200);
+        })
+        .then(response => {
+          console.log(response.text)
+        })
+    ))
   })
 })

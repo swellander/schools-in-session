@@ -45,6 +45,14 @@ const Student = db.define('student', {
     type: Sequelize.STRING,
     defaultValue: 'https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SX425_.jpg'
   },
+  userName: {
+    type: Sequelize.STRING,
+    defaultValue: 'john'
+  },
+  password: {
+    type: Sequelize.STRING,
+    defaultValue: 'dunn'
+  }
 });
 
 //ASSOCIATIONS

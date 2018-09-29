@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
+    "test": "JWT_SECRET=can DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
     "dev": "DATABASE_URL=postgres://localhost/schools_test yarn build -- -w & nodemon server --ignore src --ignore public",
     "seed": "node server/db/seed.js",
     "build": "webpack"
@@ -16,6 +16,7 @@
     "axios": "^0.18.0",
     "chai": "^4.1.2",
     "express": "^4.16.3",
+    "jwt-simple": "^0.5.5",
     "mocha": "^5.2.0",
     "pg": "^7.4.3",
     "react": "^16.5.2",
