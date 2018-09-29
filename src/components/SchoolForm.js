@@ -11,7 +11,8 @@ class SchoolForm extends Component {
       id: '',
       name: '',
       address: '',
-      description: ''
+      description: '',
+      imageUrl: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -85,6 +86,14 @@ class SchoolForm extends Component {
                     label="Description"
                     name="description"
                     value={this.state.description}
+                    onChange={this.handleChange}
+                  />
+
+                  <TextField
+                    name="imageUrl"
+                    fullWidth
+                    label="Image URL"
+                    value={this.state.imageUrl}
                     onChange={this.handleChange}
                   />
                 </form>
