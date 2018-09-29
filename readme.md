@@ -15,7 +15,7 @@
 - [x] emphasize nav button of current view
 - [x] disconnect sequelize after seed file
 - [x] after update, redirect to detail view
-- [ ] fix nav tab on refresh bug
+- [x] fix nav tab on refresh bug
 
 
 ## Ideas to fill extra time
