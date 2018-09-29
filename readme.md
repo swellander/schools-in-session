@@ -26,5 +26,6 @@
 5. Buttons to order student by each column.
 6. Standardize styles.
 7. Make responsive.
-8. Store images on AWS
+8. Store images on AWS.
+9. Incorporate Google Maps.
 

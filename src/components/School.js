@@ -7,7 +7,7 @@ class School extends React.Component {
   render() {
     const { school, classes } = this.props;
     return (
-      <Grid item xs={12} lg={3}>
+      <Grid item xs={12} lg={4}>
         <Card >
           <CardActionArea component={Link} to={`/schools/${school.id}`} className={classes.card} className={classes.action}>
             <CardMedia

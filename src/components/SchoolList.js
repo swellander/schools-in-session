@@ -21,9 +21,11 @@ class SchoolList extends React.Component {
           <AddIcon />
         </Button>
         <Grid justify="center" container style={styles} spacing={24}>
-          {this.props.schools.map(school => (
-            <School key={school.id} school={school} />
-          ))}
+          <Grid justify="center" item lg={10} container spacing={24}>
+            {this.props.schools.map(school => (
+              <School key={school.id} school={school} />
+            ))}
+          </Grid>
         </Grid>
       </div>
     )
