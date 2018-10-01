@@ -8,13 +8,13 @@ const setUser = user => (
   }
 )
 
-export const _loginUser = user => dispatch => {
-  console.log('yoo');
+export const _loginUser = (user, history) => dispatch => {
   return axios.post('/api/auth', user)
     .then(response => response.data)
     .then(payload => {
       const action = setUser(payload.user)
       dispatch(action);
+      history.push('/');
     })
     .catch(err => console.log(err))
 }

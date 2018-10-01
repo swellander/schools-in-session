@@ -21,6 +21,7 @@
 - [ ] hide header login button while user is entering info in login form 
 - [ ] fix process.env.JWT_SECRET issue
 - [ ] redirect to user page once logged in
+- [ ] add login react-route
 
 
 ## Ideas to fill extra time

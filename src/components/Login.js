@@ -57,9 +57,9 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    login: user => dispatch(_loginUser(user))
+    login: user => dispatch(_loginUser(user, history))
   }
 }
 

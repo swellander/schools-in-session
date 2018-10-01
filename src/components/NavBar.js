@@ -40,7 +40,7 @@ class NavBar extends React.Component {
           </Tabs>
 
           {/* if user is logged in, show their name and a logout btn. else, show login btn */}
-          {this.props.user.id ? <Button>Logout</Button> : <Button>Login</Button>}
+          {this.props.user.id ? <Button>Logout</Button> : <Button to="/login" component={Link}>Login</Button>}
         </AppBar>
       </div >
     )
