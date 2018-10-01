@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const request = require('supertest');
 const app = request(require('./app'));
+const jwt = require('jwt-simple');
 
 describe('Integrated api', () => {
   it('exists', () => {
@@ -17,7 +18,6 @@ describe('Integrated api', () => {
           expect(response.text).to.contain('LaVenture');
         })
     })
-
     it('can post', () => {
       const newSchool = {
         name: 'SVC',
@@ -75,19 +75,33 @@ describe('Integrated api', () => {
   });
 
   describe('Authentication', () => {
-    it('has an auth route', () => (
+    it('can authenticate a student', () => (
       app.post('/api/auth')
         .send({ userName: 'john', password: 'dunn' })
         .then(response => {
+          console.log('got the rson');
           const token = response.body.token;
           expect(token).to.be.ok;
           return app.get('/api/auth')
             .set('authorization', token)
             .expect(200);
         })
-        .then(response => {
-          console.log(response.text)
+    ));
+    //TODO: rewrite these tests
+    it('rejects a request if credentials are bad or non-existant', () => {
+      return app.get('/api/auth')
+        .expect(401)
+        .then(() => {
+          return app.get('/api/auth')
+            .set('authorization', { token: '1232wdfafwae12fafkl' })
+            .expect(401)
         })
-    ))
+        .then(() => {
+          const token = jwt.encode({ id: 'abc' }, process.env.JWT_SECRET);
+          return app.get('/api/auth')
+            .set('authorization', token)
+            .expect(401);
+        })
+    });
   })
 })

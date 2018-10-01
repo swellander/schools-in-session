@@ -17,6 +17,7 @@
 - [x] after update, redirect to detail view
 - [x] fix nav tab on refresh bug
 - [ ] fix route testing
+- [ ] rewrite/rethink token tests
 
 
 ## Ideas to fill extra time
