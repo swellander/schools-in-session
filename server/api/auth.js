@@ -13,18 +13,19 @@ router.use((req, res, next) => {
   //decode token and attempt to find user with that id
   try {
     const { id } = jwt.decode(token, process.env.JWT_SECRET);
-    Student.findById(id)
-      .then(user => {
-        //if found, attatch user to req obj
-        if (user) req.user = user;
-        //if no user found with that id, move on 
-        next();
-      })
-      .catch(next);
   } catch (ex) {
     console.log('jwt decode broke')
     next({ status: 401 })
   }
+
+  Student.findById(id)
+    .then(user => {
+      //if found, attatch user to req obj
+      if (user) req.user = user;
+      //if no user found with that id, move on 
+      next();
+    })
+    .catch(next);
 });
 
 
@@ -45,9 +46,9 @@ router.post('/', (req, res, next) => {
 });
 router.get('/', (req, res, next) => {
   if (req.user) {
-    res.send(req.user);
+    res.json(req.user);
   } else {
-    res.sendStatus(401);
+    next({ status: 401 });
   }
 });
 

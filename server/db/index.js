@@ -17,6 +17,11 @@ const School = db.define('school', {
 });
 
 const Student = db.define('student', {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true
+  },
   firstName: {
     type: Sequelize.STRING,
     get() {
