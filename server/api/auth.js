@@ -31,6 +31,7 @@ router.use((req, res, next) => {
 
 //login route
 router.post('/', (req, res, next) => {
+  console.log('/api/auth')
   //attempt to find a user with the supplied name and password
   const { userName, password } = req.body;
   Student.findOne({
@@ -39,10 +40,13 @@ router.post('/', (req, res, next) => {
     //if a user is found, send back a token
     .then(user => {
       if (user) {
-        const token = jwt.encode({ id: user.id }, process.env.JWT_SECRET);
-        res.json({ token });
+        //TODO: fix process.env.JWT_SECRET issue
+        const token = jwt.encode({ id: user.id }, 'can');
+        console.log(token, user);
+        res.json({ token, user });
       }
     })
+    .catch(next);
 });
 router.get('/', (req, res, next) => {
   if (req.user) {

@@ -38,14 +38,18 @@ class NavBar extends React.Component {
             <Tab to="/schools" component={Link} label={`schools | ${this.props.schools.list.length}`} />
             <Tab to="/students" component={Link} label={`students | ${this.props.students.list.length}`} />
           </Tabs>
+
+          {/* if user is logged in, show their name and a logout btn. else, show login btn */}
+          {this.props.user.id ? <Button>Logout</Button> : <Button>Login</Button>}
         </AppBar>
       </div >
     )
   }
 }
 
-const mapStateToProps = ({ schools, students }) => {
+const mapStateToProps = ({ schools, students, auth }) => {
   return {
+    user: auth,
     schools,
     students
   }

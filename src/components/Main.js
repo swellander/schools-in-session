@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
+import Login from './Login';
 import SchoolList from './SchoolList';
 import SchoolDetail from './SchoolDetail';
 import SchoolForm from './SchoolForm';
@@ -23,6 +24,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
           <Route exact path="/schools" component={SchoolList} />
+          <Route path="/login" component={Login} />
           <Route path="/schools/create" component={SchoolForm} />
           {/* TODO: QUESTION: research best practice for id and update paths */}
           <Route exact path="/schools/:id" component={SchoolDetail} />

@@ -18,6 +18,9 @@
 - [x] fix nav tab on refresh bug
 - [ ] fix route testing
 - [ ] rewrite/rethink token tests
+- [ ] hide header login button while user is entering info in login form 
+- [ ] fix process.env.JWT_SECRET issue
+- [ ] redirect to user page once logged in
 
 
 ## Ideas to fill extra time
