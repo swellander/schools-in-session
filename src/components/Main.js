@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { _loadSchools, } from '../store/school';
 import { _loadStudents, } from '../store/student';
+import { _exchangeTokenForAuth } from '../store/auth';
 
 
 class Main extends React.Component {
@@ -39,11 +40,12 @@ class Main extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
     init: () => {
       dispatch(_loadSchools())
       dispatch(_loadStudents())
+      dispatch(_exchangeTokenForAuth(history))
     }
   }
 };

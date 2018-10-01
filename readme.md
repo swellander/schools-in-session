@@ -20,8 +20,9 @@
 - [ ] rewrite/rethink token tests
 - [ ] hide header login button while user is entering info in login form 
 - [ ] fix process.env.JWT_SECRET issue
-- [ ] redirect to user page once logged in
-- [ ] add login react-route
+- [x] redirect to home page once logged in
+- [x] add login react-route
+- [ ] error handling on front end for bad credentials
 
 
 ## Ideas to fill extra time

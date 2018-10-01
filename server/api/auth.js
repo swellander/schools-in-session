@@ -11,8 +11,9 @@ router.use((req, res, next) => {
   }
   //if request comes in with any authorization token (not necessarily valid)
   //decode token and attempt to find user with that id
+  let id;
   try {
-    const { id } = jwt.decode(token, process.env.JWT_SECRET);
+    id = jwt.decode(token, 'can').id;
   } catch (ex) {
     console.log('jwt decode broke')
     next({ status: 401 })
@@ -31,7 +32,6 @@ router.use((req, res, next) => {
 
 //login route
 router.post('/', (req, res, next) => {
-  console.log('/api/auth')
   //attempt to find a user with the supplied name and password
   const { userName, password } = req.body;
   Student.findOne({
@@ -42,7 +42,6 @@ router.post('/', (req, res, next) => {
       if (user) {
         //TODO: fix process.env.JWT_SECRET issue
         const token = jwt.encode({ id: user.id }, 'can');
-        console.log(token, user);
         res.json({ token, user });
       }
     })

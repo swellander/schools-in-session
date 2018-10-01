@@ -8,15 +8,37 @@ const setUser = user => (
   }
 )
 
+export const _exchangeTokenForAuth = (history) => dispatch => {
+  const token = window.localStorage.getItem('token');
+  if (!token) return;
+  return axios.get('/api/auth', {
+    headers: {
+      authorization: token
+    }
+  })
+    .then(response => response.data)
+    .then(user => {
+      dispatch(setUser(user))
+      // history.push('/');
+    })
+    .catch(err => {
+      throw err;
+    })
+}
+
 export const _loginUser = (user, history) => dispatch => {
   return axios.post('/api/auth', user)
     .then(response => response.data)
     .then(payload => {
-      const action = setUser(payload.user)
+      console.log('payload', payload);
+      window.localStorage.setItem('token', payload.token);
+      const action = _exchangeTokenForAuth(history);
       dispatch(action);
       history.push('/');
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      throw err;
+    })
 }
 
 export default (state = {}, action) => {

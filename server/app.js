@@ -13,8 +13,7 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-  if (err.status == 401) res.sendStatus(401);
-  else res.send(err);
+  res.sendStatus(err.status || 500);
 })
 
 module.exports = app;
