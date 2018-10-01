@@ -79,7 +79,6 @@ describe('Integrated api', () => {
       app.post('/api/auth')
         .send({ userName: 'john', password: 'dunn' })
         .then(response => {
-          console.log('got the rson');
           const token = response.body.token;
           expect(token).to.be.ok;
           return app.get('/api/auth')
@@ -96,12 +95,15 @@ describe('Integrated api', () => {
             .set('authorization', { token: '1232wdfafwae12fafkl' })
             .expect(401)
         })
-        .then(() => {
-          const token = jwt.encode({ id: 'abc' }, process.env.JWT_SECRET);
-          return app.get('/api/auth')
-            .set('authorization', token)
-            .expect(401);
-        })
     });
+    //TODO: write a test to that checks handling good token, but bad ids
+    it('can handle good tokens, but bad ids', () => {
+      // .then(() => {
+      //   const token = jwt.encode({ id: 'abc' }, process.env.JWT_SECRET);
+      //   return app.get('/api/auth')
+      //     .set('authorization', token)
+      //     .expect(401);
+      // })
+    })
   })
 })

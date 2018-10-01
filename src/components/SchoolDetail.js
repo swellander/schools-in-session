@@ -7,7 +7,8 @@ import { Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
 
 const SchoolDetail = ({ students, school, remove }) => {
   const styles = {
-    padding: 40
+    padding: 40,
+    backgroundImage: `url(${school.imageUrl})`
   }
   const containerStyles = {
     marginTop: 40

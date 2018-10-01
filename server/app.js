@@ -8,7 +8,8 @@ app.use('/api', require('./api'));
 app.use(express.static('public'));
 
 app.use((err, req, res, next) => {
-  console.log(err);
+  if (err.status == 401) res.sendStatus(401);
+  else res.send(err);
 })
 
 module.exports = app;
