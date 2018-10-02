@@ -61,7 +61,9 @@ axios.get('https://randomuser.me/api/?results=100&inc=name')
         lastName: user.name.last,
         gpa: generateRandomGPA(),
         schoolId: generateRandomSchoolId(),
-        imageUrl: "https://api.adorable.io/avatars/149/" + user.name.last + ".png"
+        imageUrl: "https://api.adorable.io/avatars/149/" + user.name.last + ".png",
+        userName: user.name.first,
+        password: user.name.last
       }
     ));
 
