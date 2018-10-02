@@ -29,22 +29,25 @@ class NavBar extends React.Component {
     return (
       <div>
         <AppBar position="static">
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="secondary"
-            centered
-          >
-            <Tab to="/schools" component={Link} label={`schools | ${this.props.schools.list.length}`} />
-            <Tab to="/students" component={Link} label={`students | ${this.props.students.list.length}`} />
-          </Tabs>
+          <Toolbar>
+            <Tabs
+              style={{ flexGrow: 1 }}
+              value={this.state.value}
+              onChange={this.handleChange}
+              indicatorColor="secondary"
+              centered
+            >
+              <Tab to="/schools" component={Link} label={`schools | ${this.props.schools.list.length}`} />
+              <Tab to="/students" component={Link} label={`students | ${this.props.students.list.length}`} />
+            </Tabs>
 
-          {/* if user is logged in, show their name and a logout btn. else, show login btn */}
-          {
-            this.props.user.id ?
-              <Button onClick={() => this.props.logout()}>Logout</Button> :
-              <Button to="/login" component={Link}>Login</Button>
-          }
+            {/* if user is logged in, show their name and a logout btn. else, show login btn */}
+            {
+              this.props.user.id ?
+                <Button onClick={() => this.props.logout()}>Logout</Button> :
+                <Button to="/login" component={Link}>Login</Button>
+            }
+          </Toolbar>
         </AppBar>
       </div >
     )

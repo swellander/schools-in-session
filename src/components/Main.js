@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
+import ButtonAppBar from './ButtonAppBar';
 import Login from './Login';
 import HomePage from './HomePage';
 import SchoolList from './SchoolList';
