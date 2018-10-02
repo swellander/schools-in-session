@@ -41,6 +41,12 @@ export const _loginUser = (user, history) => dispatch => {
     })
 }
 
+export const logoutUser = history => {
+  window.localStorage.removeItem('token');
+  return setUser({});
+  // history.push('/');
+}
+
 export default (state = {}, action) => {
   if (action.type == SET_USER) return action.user
   return state;
