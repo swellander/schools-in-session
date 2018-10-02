@@ -8,7 +8,6 @@ import AddIcon from '@material-ui/icons/Add';
 class StudentList extends React.Component {
   render() {
     const btnStyles = {
-      float: 'right',
       margin: 20
     }
     return (

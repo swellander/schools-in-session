@@ -8,12 +8,10 @@ import AddIcon from '@material-ui/icons/Add';
 class SchoolList extends React.Component {
   render() {
     const styles = {
-      marginTop: '10vh',
       height: '90vh'
     }
     const btnStyles = {
       margin: 20,
-      float: 'right'
     }
     return (
       <div>
