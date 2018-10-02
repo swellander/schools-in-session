@@ -13,7 +13,7 @@ router.use((req, res, next) => {
   //decode token and attempt to find user with that id
   let id;
   try {
-    id = jwt.decode(token, 'can').id;
+    id = jwt.decode(token, process.env.JWT_SECRET).id;
   } catch (ex) {
     console.log('jwt decode broke')
     next({ status: 401 })
@@ -42,8 +42,7 @@ router.post('/', (req, res, next) => {
     //if a user is found, send back a token
     .then(user => {
       if (user) {
-        //TODO: fix process.env.JWT_SECRET issue
-        const token = jwt.encode({ id: user.id }, 'can');
+        const token = jwt.encode({ id: user.id }, process.env.JWT_SECRET);
         res.json({ token });
       }
     })

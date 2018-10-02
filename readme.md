@@ -24,6 +24,8 @@
 - [x] add login react-route
 - [ ] error handling on front end for bad credentials
 - [ ] when on detail page and refresh, don't redirect, rather add spinner to wait for data
+- [ ] change students to users
+
 
 
 ## Ideas to fill extra time

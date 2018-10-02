@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "JWT_SECRET=can DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
-    "dev": "JWT_SECRET=can DATABASE_URL=postgres://localhost/schools_test yarn build -- -w & nodemon server --ignore src --ignore public",
+    "dev": "yarn build -- -w & nodemon server --ignore src --ignore public",
     "seed": "node server/db/seed.js",
     "build": "webpack"
   },
@@ -15,6 +15,7 @@
     "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "chai": "^4.1.2",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "jwt-simple": "^0.5.5",
     "mocha": "^5.2.0",
