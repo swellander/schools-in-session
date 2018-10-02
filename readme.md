@@ -26,6 +26,7 @@
 - [ ] when on detail page and refresh, don't redirect, rather add spinner to wait for data
 - [ ] change students to users
 - [x] style login view
+- [ ] add modal to confirm deletes
 
 ## Ideas to fill extra time
 1. Add websockets to keep all users up to date.

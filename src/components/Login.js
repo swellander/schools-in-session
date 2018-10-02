@@ -29,7 +29,7 @@ class Login extends React.Component {
       <div style={styles}>
         <Grid justify="center" container>
           <Grid item xs={4}>
-            <Paper>
+            <Paper style={{ paddingTop: 45, paddingBottom: 45 }}>
               <form onSubmit={this.handleSubmit}>
                 <Grid container justify="center">
                   <Grid container justify="center" item xs={12}>
@@ -38,9 +38,10 @@ class Login extends React.Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12} container justify='center'>
-                    <Grid container justify="center" item xs={4}>
+                    <Grid spacing={24} container justify="center" item xs={7}>
                       <Grid item xs={12}>
                         <TextField
+                          variant="outlined"
                           onChange={this.handleChange}
                           label="Username"
                           fullWidth={true}
@@ -50,6 +51,7 @@ class Login extends React.Component {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
+                          variant="outlined"
                           type='password'
                           onChange={this.handleChange}
                           label="Password"
@@ -58,8 +60,15 @@ class Login extends React.Component {
                           value={this.state.password}
                         />
                       </Grid>
-                      <Grid item xs={9}>
-                        <Button type="submit">Login</Button>
+                      <Grid item xs={12}>
+                        <Button
+                          style={{ width: '100%' }}
+                          color="primary"
+                          variant="contained"
+                          type="submit"
+                        >
+                          Login
+                        </Button>
                       </Grid>
                     </Grid>
                   </Grid>
