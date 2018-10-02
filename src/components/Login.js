@@ -2,6 +2,7 @@ import React from 'react';
 import { _loginUser } from '../store/auth';
 import { connect } from 'react-redux';
 import { Button, Grid, Paper, TextField } from '@material-ui/core';
+import AccountBox from '@material-ui/icons/AccountBox';
 
 class Login extends React.Component {
   constructor() {
@@ -21,38 +22,53 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: [e.target.value] })
   }
   render() {
+    const styles = {
+      marginTop: '10vh'
+    }
     return (
-      <Grid justify="center" container>
-        <Grid item xs={7}>
-          <Paper>
-            <Grid container justify="center">
+      <div style={styles}>
+        <Grid justify="center" container>
+          <Grid item xs={4}>
+            <Paper>
               <form onSubmit={this.handleSubmit}>
-                <Grid item xs={9}>
-                  <TextField
-                    onChange={this.handleChange}
-                    label="Username"
-                    fullWidth={true}
-                    name="userName"
-                    value={this.state.userName}
-                  />
-                </Grid>
-                <Grid item xs={9}>
-                  <TextField
-                    onChange={this.handleChange}
-                    label="Password"
-                    fullWidth={true}
-                    name="password"
-                    value={this.state.password}
-                  />
-                </Grid>
-                <Grid item xs={9}>
-                  <Button type="submit">Login</Button>
+                <Grid container justify="center">
+                  <Grid container justify="center" item xs={12}>
+                    <Grid item xs={4}>
+                      <AccountBox style={{ fontSize: 150 }} />
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} container justify='center'>
+                    <Grid container justify="center" item xs={4}>
+                      <Grid item xs={12}>
+                        <TextField
+                          onChange={this.handleChange}
+                          label="Username"
+                          fullWidth={true}
+                          name="userName"
+                          value={this.state.userName}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          type='password'
+                          onChange={this.handleChange}
+                          label="Password"
+                          fullWidth={true}
+                          name="password"
+                          value={this.state.password}
+                        />
+                      </Grid>
+                      <Grid item xs={9}>
+                        <Button type="submit">Login</Button>
+                      </Grid>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </form>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
+      </div >
     )
   }
 }

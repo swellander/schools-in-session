@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { _updateSchool, _addSchool } from '../store/school';
 import { TextField, Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 
 class SchoolForm extends Component {
   constructor() {

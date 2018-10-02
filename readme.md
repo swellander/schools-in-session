@@ -19,19 +19,18 @@
 - [ ] fix route testing
 - [ ] rewrite/rethink token tests
 - [ ] hide header login button while user is entering info in login form 
-- [ ] fix process.env.JWT_SECRET issue
+- [x] fix process.env.JWT_SECRET issue
 - [x] redirect to home page once logged in
 - [x] add login react-route
 - [ ] error handling on front end for bad credentials
 - [ ] when on detail page and refresh, don't redirect, rather add spinner to wait for data
 - [ ] change students to users
-
-
+- [x] style login view
 
 ## Ideas to fill extra time
 1. Add websockets to keep all users up to date.
 2. Add badges to schools and students tabs to notify users of newly created (websocket) items.
-3. Add a "Create Random Student" function that uses https://randomuser.me/.
+3. [DONE] Add a "Create Random Student" function that uses https://randomuser.me/.
 4. Search feature for longer student lists.
 5. Buttons to order student by each column.
 6. Standardize styles.
