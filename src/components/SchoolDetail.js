@@ -5,10 +5,10 @@ import { Redirect, Link } from 'react-router-dom';
 import { _deleteSchool } from '../store/school';
 import { Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
 
-const SchoolDetail = ({ students, school, remove }) => {
+const SchoolDetail = ({ user, students, school, remove }) => {
   const styles = {
     padding: 40,
-    backgroundImage: `url(${school.imageUrl})`
+    // backgroundImage: `url(${school.imageUrl})`
   }
   const containerStyles = {
     marginTop: 40
@@ -16,6 +16,8 @@ const SchoolDetail = ({ students, school, remove }) => {
   const btnStyles = {
     marginTop: 6
   }
+
+  const auth = Boolean(user.id)
 
   if (!school) return <Redirect to="/schools" />
   return (
@@ -28,12 +30,15 @@ const SchoolDetail = ({ students, school, remove }) => {
                 <Grid item xs={9}>
                   <Typography variant="display2">{school.name}</Typography>
                 </Grid>
-                <Grid item xs={3}>
-                  <div style={btnStyles}>
-                    <Button to={`/schools/${school.id}/update`} component={Link} variant="contained" color="primary">Update</Button>
-                    <Button variant="contained" color="secondary" onClick={() => remove(school.id)}>Delete</Button>
-                  </div>
-                </Grid>
+
+                {auth && (
+                  <Grid item xs={3}>
+                    <div style={btnStyles}>
+                      <Button to={`/schools/${school.id}/update`} component={Link} variant="contained" color="primary">Update</Button>
+                      <Button variant="contained" color="secondary" onClick={() => remove(school.id)}>Delete</Button>
+                    </div>
+                  </Grid>
+                )}
               </Grid>
 
               <Typography variant="caption">
@@ -60,11 +65,12 @@ const SchoolDetail = ({ students, school, remove }) => {
   )
 }
 
-const mapStateToProps = ({ schools, students }, ownProps) => {
+const mapStateToProps = ({ auth, schools, students }, ownProps) => {
   const { id } = ownProps.match.params;
   return {
     school: schools.list.find(school => school.id == id),
-    students: students.list.filter(student => student.schoolId == id)
+    students: students.list.filter(student => student.schoolId == id),
+    user: auth
   }
 }
 

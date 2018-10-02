@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { _deleteStudent } from '../store/student';
 import { Button, Typography, Paper, Grid, Avatar } from '@material-ui/core';
 
-const StudentDetail = ({ student, remove }) => {
+const StudentDetail = ({ user, student, remove }) => {
   if (!student) return <Redirect to="/schools" />
   const avatarStyles = {
     width: 200,
@@ -14,6 +14,7 @@ const StudentDetail = ({ student, remove }) => {
   const styles = {
     marginTop: '10vh'
   }
+  const auth = Boolean(user.id);
   return (
     <div style={styles}>
 
@@ -67,14 +68,16 @@ const StudentDetail = ({ student, remove }) => {
               </Grid>
             </Grid>
 
-            <Grid justify="center" container spacing={24}>
-              <Grid align="center" item xs={3}>
-                <Button to={`/students/${student.id}/update`} component={Link} variant="contained" color="primary">Update</Button>
+            {auth && (
+              <Grid justify="center" container spacing={24}>
+                <Grid align="center" item xs={3}>
+                  <Button to={`/students/${student.id}/update`} component={Link} variant="contained" color="primary">Update</Button>
+                </Grid>
+                <Grid align="center" item xs={3}>
+                  <Button variant="contained" color="secondary" onClick={() => remove(student.id)}>Delete</Button>
+                </Grid>
               </Grid>
-              <Grid align="center" item xs={3}>
-                <Button variant="contained" color="secondary" onClick={() => remove(student.id)}>Delete</Button>
-              </Grid>
-            </Grid>
+            )}
 
           </Paper>
         </Grid>
@@ -83,10 +86,11 @@ const StudentDetail = ({ student, remove }) => {
   )
 }
 
-const mapStateToProps = ({ students }, ownProps) => {
+const mapStateToProps = ({ students, auth }, ownProps) => {
   const { id } = ownProps.match.params;
   return {
     student: students.list.find(student => student.id == id),
+    user: auth
   }
 }
 
