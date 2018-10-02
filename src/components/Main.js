@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Login from './Login';
+import HomePage from './HomePage';
 import SchoolList from './SchoolList';
 import SchoolDetail from './SchoolDetail';
 import SchoolForm from './SchoolForm';
@@ -23,7 +24,7 @@ class Main extends React.Component {
       <div>
         <NavBar />
         <Switch>
-          <Route exact path="/" render={() => <h1>Home Page</h1>} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/schools" component={SchoolList} />
           <Route path="/login" component={Login} />
           <Route path="/schools/create" component={SchoolForm} />

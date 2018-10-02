@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const jwt = require('jwt-simple');
-const { Student } = require('../db').models;
+const { Student, School } = require('../db').models;
 
 //authentication middleware
 router.use((req, res, next) => {
@@ -19,7 +19,9 @@ router.use((req, res, next) => {
     next({ status: 401 })
   }
 
-  Student.findById(id)
+  Student.findById(id, {
+    include: [School]
+  })
     .then(user => {
       //if found, attatch user to req obj
       if (user) req.user = user;
@@ -35,14 +37,14 @@ router.post('/', (req, res, next) => {
   //attempt to find a user with the supplied name and password
   const { userName, password } = req.body;
   Student.findOne({
-    where: { userName, password }
+    where: { userName, password },
   })
     //if a user is found, send back a token
     .then(user => {
       if (user) {
         //TODO: fix process.env.JWT_SECRET issue
         const token = jwt.encode({ id: user.id }, 'can');
-        res.json({ token, user });
+        res.json({ token });
       }
     })
     .catch(next);
