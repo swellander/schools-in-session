@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   Student.create(req.body, {
     include: [School]
   })
@@ -25,10 +24,13 @@ router.post('/', (req, res, next) => {
       })
     ))
     .then(student => {
-      console.log(student)
       res.json(student)
     })
-    .catch(next);
+    .catch((err) => {
+      console.log('SEquelize error')
+      console.log(err);
+      next(err)
+    });
 });
 router.put('/', (req, res, next) => {
   //TODO: /QUESTION: is there a way to do this in one fell swoop? 
