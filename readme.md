@@ -38,5 +38,5 @@
 7. Make responsive.
 8. Store images on AWS.
 9. Incorporate Google Maps.
-10. Authentication
+10. DONE Authentication
 

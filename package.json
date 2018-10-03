@@ -7,7 +7,9 @@
     "test": "JWT_SECRET=can DATABASE_URL=postgres://localhost/schools_test nodemon ./node_modules/mocha/bin/mocha 'server/**/*.test.js'",
     "dev": "yarn build -- -w & nodemon server --ignore src --ignore public",
     "seed": "node server/db/seed.js",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "yarn seed && node server",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
