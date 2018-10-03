@@ -93,7 +93,6 @@ const mapStateToProps = ({ schools, students, auth }) => {
   }
 }
 const mapDispatchToProps = (dispatch, { history }) => {
-  console.log(history);
   return {
     logout: () => dispatch(logoutUser(history))
   }

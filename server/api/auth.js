@@ -35,18 +35,25 @@ router.use((req, res, next) => {
 //login route
 router.post('/', (req, res, next) => {
   //attempt to find a user with the supplied name and password
+  console.log(req.body);
   const { userName, password } = req.body;
   Student.findOne({
     where: { userName, password },
   })
     //if a user is found, send back a token
     .then(user => {
+      console.log(user);
       if (user) {
         const token = jwt.encode({ id: user.id }, process.env.JWT_SECRET);
         res.json({ token });
       }
+      else {
+        next({ status: 401 })
+      }
     })
-    .catch(next);
+    .catch(err => {
+      next(err);
+    });
 });
 router.get('/', (req, res, next) => {
   if (req.user) {

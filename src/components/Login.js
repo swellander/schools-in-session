@@ -9,17 +9,19 @@ class Login extends React.Component {
     super();
     this.state = {
       userName: '',
-      password: ''
+      password: '',
+      error: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state)
+      .catch(() => this.setState({ error: true }))
   }
   handleChange(e) {
-    this.setState({ [e.target.name]: [e.target.value] })
+    this.setState({ [e.target.name]: e.target.value })
   }
   render() {
     const styles = {
@@ -41,6 +43,7 @@ class Login extends React.Component {
                     <Grid spacing={24} container justify="center" item xs={7}>
                       <Grid item xs={12}>
                         <TextField
+                          error={this.state.error}
                           variant="outlined"
                           onChange={this.handleChange}
                           label="Username"
@@ -51,11 +54,13 @@ class Login extends React.Component {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
+                          error={this.state.error}
                           variant="outlined"
                           type='password'
                           onChange={this.handleChange}
                           label="Password"
                           fullWidth={true}
+                          autoComplete="current-password"
                           name="password"
                           value={this.state.password}
                         />

@@ -30,6 +30,7 @@ export const _loginUser = (user, history) => dispatch => {
   return axios.post('/api/auth', user)
     .then(response => response.data)
     .then(payload => {
+      console.log('wooo', payload);
       window.localStorage.setItem('token', payload.token);
       const action = _exchangeTokenForAuth(history);
       dispatch(action);
