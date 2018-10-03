@@ -20,7 +20,6 @@ class Login extends React.Component {
     e.preventDefault();
     this.props.login(this.state)
       .catch((err) => {
-        console.dir(err.response.status);
         if (err.response.status == 404) {
           this.setState({ userNameError: true })
         } else {

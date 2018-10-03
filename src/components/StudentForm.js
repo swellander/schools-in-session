@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { _updateStudent, _addStudent } from '../store/student';
-import { Select, MenuItem, TextField, Button, Typography, Paper, Grid, Avatar } from '@material-ui/core';
+import { Select, MenuItem, TextField, Button, Typography, Paper, Grid, Avatar, InputLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 class StudentForm extends Component {
@@ -10,6 +10,9 @@ class StudentForm extends Component {
     this.state = {
       firstName: '',
       lastName: '',
+      imageUrl: '',
+      userName: '',
+      password: '',
       gpa: '',
       schoolId: 'starting',
     }
@@ -47,39 +50,83 @@ class StudentForm extends Component {
         <Grid justify="center" container>
           <Grid item xs={4}>
             <Paper>
-              <Grid container justify="center">
-                <Grid item>
-                  <Avatar
-                    style={avatarStyles}
-                    src={this.state.imageUrl}
-                    alt={this.state.firstName}
-                  />
+              {this.props.student && (
+                <Grid container justify="center">
+                  <Grid item>
+                    <Avatar
+                      style={avatarStyles}
+                      src={this.state.imageUrl}
+                      alt={this.state.firstName}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
+              )}
               <form onSubmit={this.handleSubmit}>
                 <Grid justify="center" spacing={8} container>
 
                   {/* first row */}
 
-                  <Grid align="center" item xs={7}>
-                    <Typography>
-                      <TextField
-                        id="standard-name"
-                        label="First Name"
-                        name="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                        margin="normal"
-                      />
-                      <TextField
-                        id="standard-name"
-                        label="Lase Name"
-                        name="lastName"
-                        value={this.state.lastName}
-                        onChange={this.handleChange}
-                        margin="normal"
-                      />
-                    </Typography>
+                  <Grid align="center" item xs={8}>
+                    <TextField
+                      fullWidth
+                      label="First Name"
+                      name="firstName"
+                      value={this.state.firstName}
+                      onChange={this.handleChange}
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Last Name"
+                      name="lastName"
+                      value={this.state.lastName}
+                      onChange={this.handleChange}
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Image URL"
+                      name="imageUrl"
+                      value={this.state.imageUrl}
+                      onChange={this.handleChange}
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Username"
+                      name="userName"
+                      value={this.state.userName}
+                      onChange={this.handleChange}
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                      margin="normal"
+                    />
+                    <InputLabel htmlFor="schoolId">School</InputLabel>
+                    <Select
+                      id="schoolId"
+                      name="schoolId"
+                      fullWidth
+                      value={this.state.schoolId}
+                      onChange={this.handleChange}
+                      label="School"
+                    >
+                      {/* <MenuItem value="starting">
+                        <em>School</em>
+                      </MenuItem> */}
+                      {this.props.schools.map(school => (
+                        <MenuItem
+                          value={school.id}
+                          key={school.id}>
+                          {school.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
                   </Grid>
 
                   {/* second row */}
@@ -99,24 +146,6 @@ class StudentForm extends Component {
                   {/* third row */}
 
                   <Grid align="center" item xs={7}>
-                    <Select
-                      autoWidth={false}
-                      name="schoolId"
-                      value={this.state.schoolId}
-                      onChange={this.handleChange}
-                      label="School"
-                    >
-                      <MenuItem value="starting">
-                        <em>School</em>
-                      </MenuItem>
-                      {this.props.schools.map(school => (
-                        <MenuItem
-                          value={school.id}
-                          key={school.id}>
-                          {school.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
                   </Grid>
 
                 </Grid>
