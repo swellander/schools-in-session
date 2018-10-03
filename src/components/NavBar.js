@@ -32,6 +32,8 @@ class NavBar extends React.Component {
   }
   logout() {
     this.props.logout();
+    //close out menu after loggin' out
+    this.handleClose();
   }
   render() {
     const styles = {
@@ -62,17 +64,29 @@ class NavBar extends React.Component {
                 <Button variant="contained" to="/login" component={Link}>Login</Button> :
                 (
                   <div>
-                    <IconButton onClick={this.handleMenu}>
+                    <IconButton
+                      onClick={this.handleMenu}
+                      aria-owns={open ? 'profile-menu' : null}
+                      aria-haspopup="true"
+                    >
                       <Avatar
                         src={this.props.user.imageUrl}
                       />
                     </IconButton>
                     <Menu
+                      id="profile-menu"
                       anchorEl={anchorEl}
                       open={open}
                       onClose={this.handleClose}
                     >
-                      <MenuItem>Profile</MenuItem>
+                      <MenuItem
+                        to={`/students/${this.props.user.id}`}
+                        component={Link}
+                        onClick={this.handleClose}
+                      >
+                        Profile
+                      </MenuItem>
+
                       <MenuItem onClick={this.logout}>Logout</MenuItem>
                     </Menu>
                   </div>

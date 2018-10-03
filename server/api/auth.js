@@ -15,7 +15,6 @@ router.use((req, res, next) => {
   try {
     id = jwt.decode(token, process.env.JWT_SECRET).id;
   } catch (ex) {
-    console.log('jwt decode broke')
     next({ status: 401 })
   }
 
@@ -35,7 +34,6 @@ router.use((req, res, next) => {
 //login route
 router.post('/', (req, res, next) => {
   //attempt to find a user with the supplied name and password
-  console.log(req.body);
   const { userName, password } = req.body;
   Student.findOne({
     where: { userName }
