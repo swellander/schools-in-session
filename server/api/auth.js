@@ -38,16 +38,17 @@ router.post('/', (req, res, next) => {
   console.log(req.body);
   const { userName, password } = req.body;
   Student.findOne({
-    where: { userName, password },
+    where: { userName }
   })
     //if a user is found, send back a token
     .then(user => {
-      console.log(user);
-      if (user) {
+      if (!user) {
+        next({ status: 404 });
+      }
+      else if (user.password == password) {
         const token = jwt.encode({ id: user.id }, process.env.JWT_SECRET);
         res.json({ token });
-      }
-      else {
+      } else {
         next({ status: 401 })
       }
     })

@@ -10,7 +10,8 @@ class Login extends React.Component {
     this.state = {
       userName: '',
       password: '',
-      error: false
+      userNameError: false,
+      passwordError: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,15 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
-      .catch(() => this.setState({ error: true }))
+      .catch((err) => {
+        console.dir(err.response.status);
+        if (err.response.status == 404) {
+          this.setState({ userNameError: true })
+        } else {
+          this.setState({ userNameError: false })
+        }
+        this.setState({ passwordError: true })
+      })
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -43,7 +52,7 @@ class Login extends React.Component {
                     <Grid spacing={24} container justify="center" item xs={7}>
                       <Grid item xs={12}>
                         <TextField
-                          error={this.state.error}
+                          error={this.state.userNameError}
                           variant="outlined"
                           onChange={this.handleChange}
                           label="Username"
@@ -54,7 +63,7 @@ class Login extends React.Component {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
-                          error={this.state.error}
+                          error={this.state.passwordError}
                           variant="outlined"
                           type='password'
                           onChange={this.handleChange}

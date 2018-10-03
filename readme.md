@@ -22,7 +22,7 @@
 - [x] fix process.env.JWT_SECRET issue
 - [x] redirect to home page once logged in
 - [x] add login react-route
-- [ ] error handling on front end for bad credentials
+- [x] error handling on front end for bad credentials
 - [ ] when on detail page and refresh, don't redirect, rather add spinner to wait for data
 - [ ] change students to users
 - [x] style login view
