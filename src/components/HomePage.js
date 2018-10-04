@@ -19,6 +19,12 @@ class HomePage extends Component {
                   'Welcome!'
               }
             </Typography>
+            <hr></hr>
+            {user.id && (
+              <Typography variant="display1">
+                Create a student and login to edit/delete
+            </Typography>
+            )}
           </Grid>
         </Grid>
       </div>
