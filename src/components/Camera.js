@@ -8,14 +8,23 @@ class Camera extends React.Component {
     constructor() {
         super();
         this.state = {
-            camera: false
+            camera: false,
+            image: ''
         }
         this.handleClick = this.handleClick.bind(this);
+        this.capture = this.capture.bind(this);
+        this.setRef = this.setRef.bind(this);
     }
     handleClick() {
-        console.log('clicked')
-        this.setState({ camera: true });
-
+        if (this.state.camera) this.capture();
+        else this.setState({ camera: true });
+    }
+    setRef(webcam) {
+        this.webcam = webcam;
+    }
+    capture() {
+        const image = this.webcam.getScreenshot();
+        this.setState({ image })
     }
     render() {
         const cameraStyles = {
@@ -28,7 +37,19 @@ class Camera extends React.Component {
             <IconButton onClick={this.handleClick}>
                 {this.state.camera ? (
                     <div style={cameraStyles}>
-                        <Webcam style={{ marginTop: '-90px', marginLeft: '-200px' }} />
+                        {this.state.image.length > 0 ? (
+                            <img
+                                style={{ marginTop: '-30px', marginLeft: '-200px' }}
+                                src={this.state.image}
+                            />
+                        )
+                            : (
+                                <Webcam
+                                    style={{ marginTop: '-90px', marginLeft: '-200px' }}
+                                    ref={this.setRef}
+                                    screenshotFormat="image/jpeg"
+                                />
+                            )}
                     </div>
                 )
                     :
