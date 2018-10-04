@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Camera from './Camera';
 import { connect } from 'react-redux';
 import { _updateStudent, _addStudent } from '../store/student';
-import { Select, MenuItem, TextField, Button, Typography, Paper, Grid, Avatar, InputLabel } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Select, MenuItem, TextField, Button, Typography, Paper, Grid, Avatar, InputLabel, IconButton } from '@material-ui/core';
 
 class StudentForm extends Component {
   constructor() {
@@ -15,6 +15,7 @@ class StudentForm extends Component {
       password: '',
       gpa: '',
       schoolId: 'starting',
+      camera: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,19 +49,23 @@ class StudentForm extends Component {
     return (
       <div style={styles}>
         <Grid justify="center" container>
-          <Grid item xs={4}>
-            <Paper>
-              {this.props.student && (
-                <Grid container justify="center">
-                  <Grid item>
+          <Grid item xs={4} >
+            <Paper style={{ paddingTop: 40 }}>
+              <Grid container justify="center">
+                <Grid item>
+                  {this.props.student ? (
                     <Avatar
                       style={avatarStyles}
                       src={this.state.imageUrl}
                       alt={this.state.firstName}
                     />
-                  </Grid>
+                  )
+                    :
+                    (
+                      <Camera />
+                    )}
                 </Grid>
-              )}
+              </Grid>
               <form onSubmit={this.handleSubmit}>
                 <Grid justify="center" spacing={8} container>
 
