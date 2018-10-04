@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { _updateSchool, _addSchool } from '../store/school';
 import { TextField, Typography, Paper, Grid, Button, Divider } from '@material-ui/core';
+import LocationSearchInput from './LocationSearchInput';
 
 class SchoolForm extends Component {
   constructor() {
@@ -11,10 +12,13 @@ class SchoolForm extends Component {
       name: '',
       address: '',
       description: '',
-      imageUrl: ''
+      imageUrl: '',
+      lat: '',
+      lng: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAddressSelect = this.handleAddressSelect.bind(this);
   }
   componentDidMount() {
     const { school } = this.props;
@@ -27,6 +31,9 @@ class SchoolForm extends Component {
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+  handleAddressSelect(addressObj) {
+    this.setState({ ...addressObj }, () => console.log(this.state))
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -72,11 +79,17 @@ class SchoolForm extends Component {
                     </Grid>
                   </Grid>
 
-                  <TextField
+                  {/* <TextField
                     name="address"
                     label="Address"
                     value={this.state.address}
                     onChange={this.handleChange}
+                    component={LocationSearchInput}
+                  /> */}
+
+                  <LocationSearchInput
+                    selectAddress={this.handleAddressSelect}
+                    initialAddress={this.state.address}
                   />
 
                   <TextField
@@ -95,6 +108,7 @@ class SchoolForm extends Component {
                     value={this.state.imageUrl}
                     onChange={this.handleChange}
                   />
+
                 </form>
               </div>
 
