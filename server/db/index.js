@@ -52,8 +52,9 @@ const Student = db.define('student', {
       return strNum;
     }
   },
+  //QUESTION: Should this be a BLOB instead of a TEXT?
   imageUrl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue: 'https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SX425_.jpg'
   },
   userName: {

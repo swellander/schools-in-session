@@ -19,6 +19,7 @@ class StudentForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setImageUrl = this.setImageUrl.bind(this);
   }
   componentDidMount() {
     const { student } = this.props;
@@ -27,6 +28,9 @@ class StudentForm extends Component {
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+  setImageUrl(imageUrl) {
+    this.setState({ imageUrl })
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -62,7 +66,7 @@ class StudentForm extends Component {
                   )
                     :
                     (
-                      <Camera />
+                      <Camera setImage={this.setImageUrl} />
                     )}
                 </Grid>
               </Grid>
@@ -88,14 +92,14 @@ class StudentForm extends Component {
                       onChange={this.handleChange}
                       margin="normal"
                     />
-                    <TextField
+                    {/* <TextField
                       fullWidth
                       label="Image URL"
                       name="imageUrl"
                       value={this.state.imageUrl}
                       onChange={this.handleChange}
                       margin="normal"
-                    />
+                    /> */}
                     <TextField
                       fullWidth
                       label="Username"

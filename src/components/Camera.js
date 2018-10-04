@@ -24,7 +24,9 @@ class Camera extends React.Component {
     }
     capture() {
         const image = this.webcam.getScreenshot();
+        console.log(image);
         this.setState({ image })
+        this.props.setImage(image);
     }
     render() {
         const cameraStyles = {
@@ -45,6 +47,7 @@ class Camera extends React.Component {
                         )
                             : (
                                 <Webcam
+                                    audio={false}
                                     style={{ marginTop: '-90px', marginLeft: '-200px' }}
                                     ref={this.setRef}
                                     screenshotFormat="image/jpeg"
