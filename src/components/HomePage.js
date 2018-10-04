@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Typography } from '@material-ui/core';
+import Map from './Map';
 
 class HomePage extends Component {
   render() {
@@ -27,6 +28,7 @@ class HomePage extends Component {
             )}
           </Grid>
         </Grid>
+
       </div>
     )
   }
