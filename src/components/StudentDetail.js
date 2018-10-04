@@ -14,7 +14,7 @@ const StudentDetail = ({ user, student, remove }) => {
   const styles = {
     marginTop: '10vh'
   }
-  const auth = Boolean(user.id);
+
   return (
     <div style={styles}>
 
@@ -68,7 +68,7 @@ const StudentDetail = ({ user, student, remove }) => {
               </Grid>
             </Grid>
 
-            {auth.id == student.id && (
+            {user.id == student.id && (
               <Grid justify="center" container spacing={24}>
                 <Grid align="center" item xs={3}>
                   <Button to={`/students/${student.id}/update`} component={Link} variant="contained" color="primary">Update</Button>

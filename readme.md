@@ -27,6 +27,7 @@
 - [ ] change students to users
 - [x] style login view
 - [ ] add modal to confirm deletes
+- [ ] fix map accuracy issue
 
 ## Ideas to fill extra time
 1. Add websockets to keep all users up to date.
@@ -37,6 +38,6 @@
 6. Standardize styles.
 7. Make responsive.
 8. Store images on AWS.
-9. Incorporate Google Maps.
+9. [DONE] Incorporate Google Maps.
 10. [DONE] Authentication
 

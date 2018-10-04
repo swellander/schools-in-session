@@ -43,6 +43,7 @@ export const _loginUser = (user, history) => dispatch => {
 
 export const logoutUser = history => {
   window.localStorage.removeItem('token');
+  history.push('/');
   return setUser({});
   // history.push('/');
 }

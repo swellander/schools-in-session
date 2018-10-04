@@ -21,7 +21,7 @@ class HomePage extends Component {
               }
             </Typography>
             <hr></hr>
-            {user.id && (
+            {!user.id && (
               <Typography variant="display1">
                 Create a student and login to edit/delete
             </Typography>
