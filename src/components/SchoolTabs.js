@@ -17,14 +17,9 @@ class SchoolTabs extends Component {
     this.setState({ value })
   }
   render() {
-    const props = {
-      center: {
-        lat: 59.95,
-        lng: 30.33
-      },
-      zoom: 11
-    };
     const { value } = this.state;
+    const { students, school } = this.props;
+    const { lat, lng } = school;
     return (
       <div>
         <Tabs
@@ -34,17 +29,18 @@ class SchoolTabs extends Component {
           <Tab label="Students" />
           <Tab label="Map" />
         </Tabs>
-        {value === 0 && <StudentTable detail={true} students={this.props.students} />}
-        {value === 1 && <Map center={props.center} zoom={props.zoom} />}
+        {value === 0 && <StudentTable detail={true} students={students} />}
+        {value === 1 && <Map center={{ lat, lng }} zoom={11} />}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ students }, ownProps) => {
+const mapStateToProps = ({ students, schools }, ownProps) => {
   const { id } = ownProps.match.params;
   return {
     students: students.list.filter(student => student.schoolId == id),
+    school: schools.list.find(school => school.id == id),
   }
 }
 
