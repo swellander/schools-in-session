@@ -8,6 +8,12 @@ const School = db.define('school', {
   address: {
     type: Sequelize.TEXT,
   },
+  lat: {
+    type: Sequelize.FLOAT
+  },
+  lng: {
+    type: Sequelize.FLOAT
+  },
   description: {
     type: Sequelize.TEXT,
   },

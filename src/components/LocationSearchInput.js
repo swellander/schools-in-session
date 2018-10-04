@@ -55,6 +55,7 @@ class LocationSearchInput extends React.Component {
               {...getInputProps({
                 label: 'Address',
                 className: 'location-search-input',
+                fullWidth: true
               })}
             />
             <Paper className='autocomplete-dropdown-container'>

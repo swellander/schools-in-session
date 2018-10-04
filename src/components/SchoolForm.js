@@ -79,14 +79,6 @@ class SchoolForm extends Component {
                     </Grid>
                   </Grid>
 
-                  {/* <TextField
-                    name="address"
-                    label="Address"
-                    value={this.state.address}
-                    onChange={this.handleChange}
-                    component={LocationSearchInput}
-                  /> */}
-
                   <LocationSearchInput
                     selectAddress={this.handleAddressSelect}
                     initialAddress={this.state.address}

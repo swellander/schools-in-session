@@ -52,6 +52,8 @@ class SchoolDetail extends React.Component {
 
                 <br />
                 <Divider />
+
+                {/* Student list and Map */}
                 <br />
                 <SchoolTabs />
               </div>
