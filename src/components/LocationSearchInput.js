@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import { TextField } from '@material-ui/core';
+import { MenuItem, Paper, TextField } from '@material-ui/core';
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
@@ -57,8 +57,7 @@ class LocationSearchInput extends React.Component {
                 className: 'location-search-input',
               })}
             />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
+            <Paper className='autocomplete-dropdown-container'>
               {suggestions.map(suggestion => {
                 const className = suggestion.active
                   ? 'suggestion-item--active'
@@ -68,17 +67,16 @@ class LocationSearchInput extends React.Component {
                   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' };
                 return (
-                  <div
+                  <MenuItem
                     {...getSuggestionItemProps(suggestion, {
                       className,
                       style,
                     })}
                   >
                     <span>{suggestion.description}</span>
-                  </div>
+                  </MenuItem>
                 );
-              })}
-            </div>
+              })}</Paper>
           </div>
         )}
       </PlacesAutocomplete>
