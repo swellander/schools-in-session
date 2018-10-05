@@ -28,7 +28,6 @@ class HomePage extends Component {
             )}
           </Grid>
         </Grid>
-
       </div>
     )
   }
