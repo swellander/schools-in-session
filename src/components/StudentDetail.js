@@ -63,7 +63,7 @@ const StudentDetail = ({ user, student, remove }) => {
               </Grid>
               <Grid item xs={7}>
                 <Typography to={`/schools/${student.schoolId}`} component={Link}>
-                  {student.school.name}
+                  {student.school ? student.school.name : 'N/A'}
                 </Typography>
               </Grid>
             </Grid>

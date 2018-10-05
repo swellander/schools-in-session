@@ -16,7 +16,7 @@ const Student = ({ student, detail }) => {
       </TableCell>
       {detail ? '' :
         <TableCell>
-          {student.school.name}
+          {student.school ? student.school.name : 'N/A'}
         </TableCell>
       }
     </TableRow>
