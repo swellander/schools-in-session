@@ -13,7 +13,12 @@ class Map extends Component {
       zoom: 11
     };
   }
-
+  renderMarkers(map, maps) {
+    let marker = new maps.Marker({
+      position: this.props.center,
+      map,
+    });
+  }
   render() {
     const { lat, lng } = this.props.center;
     console.log(lat, lng)
@@ -24,13 +29,8 @@ class Map extends Component {
           bootstrapURLKeys={{ key: 'AIzaSyDuFl6Og32tz_XPmQ68bPOb4rUebpJ3Jvs' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
         >
-          <Room
-            lat={lat}
-            lng={lng}
-            color="secondary"
-            fontSize="large"
-          />
         </GoogleMapReact>
       </div>
     );

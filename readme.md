@@ -26,8 +26,8 @@
 - [ ] when on detail page and refresh, don't redirect, rather add spinner to wait for data
 - [ ] change students to users
 - [x] style login view
-- [ ] add modal to confirm deletes
-- [ ] fix map accuracy issue
+- [x] add modal to confirm deletes
+- [x] fix map accuracy issue
 
 ## Ideas to fill extra time
 1. Add websockets to keep all users up to date.
@@ -38,6 +38,6 @@
 6. Standardize styles.
 7. Make responsive.
 8. Store images on AWS.
-9. [DONE] Incorporate Google Maps.
+9. [DONE] add.
 10. [DONE] Authentication
 
