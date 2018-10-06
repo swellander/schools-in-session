@@ -3,7 +3,6 @@ import { IconButton } from '@material-ui/core';
 import Webcam from "react-webcam";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-
 class Camera extends React.Component {
     constructor() {
         super();
@@ -15,8 +14,13 @@ class Camera extends React.Component {
         this.capture = this.capture.bind(this);
         this.setRef = this.setRef.bind(this);
     }
+    componentDidUpdate(prevProps) {
+        if (!prevProps.image && this.props.image) this.setState({ image: this.props.image, camera: true })
+    }
     handleClick() {
-        if (this.state.camera) this.capture();
+        //check if user wants to take photo, or reset for a re-take
+        if (this.state.image.length > 0) this.setState({ image: '' })
+        else if (this.state.camera) this.capture();
         else this.setState({ camera: true });
     }
     setRef(webcam) {
@@ -24,7 +28,6 @@ class Camera extends React.Component {
     }
     capture() {
         const image = this.webcam.getScreenshot();
-        console.log(image);
         this.setState({ image })
         this.props.setImage(image);
     }

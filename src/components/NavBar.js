@@ -38,7 +38,6 @@ class NavBar extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    console.log(this.props.user, "Nav Bar");
     return (
       <div>
         <AppBar position="static">
@@ -96,8 +95,6 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = ({ schools, students, auth }) => {
-  console.log(students)
-  console.log(auth);
   return {
     user: auth,
     schools,

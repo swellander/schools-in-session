@@ -67,11 +67,12 @@ class StudentForm extends Component {
               <Grid container justify="center">
                 <Grid item>
                   {this.props.student ? (
-                    <Avatar
-                      style={avatarStyles}
-                      src={this.state.imageUrl}
-                      alt={this.state.firstName}
-                    />
+                    // <Avatar
+                    //   style={avatarStyles}
+                    //   src={this.state.imageUrl}
+                    //   alt={this.state.firstName}
+                    // />
+                    <Camera image={this.state.imageUrl} setImage={this.setImageUrl} />
                   )
                     :
                     (
