@@ -1,4 +1,12 @@
-## Todo
+## To get started on your local machine
+```
+npm install
+npm run seed
+npm run dev
+```
+
+
+<!-- ## Todo
 (Search: "TODO" or "QUESTION" to find specific locations)
 - [ ] rename action creators to UPDATE from UPDATE_SCHOOL
 - [ ] add babel stage-2 plugin
@@ -40,4 +48,4 @@
 8. Store images on AWS.
 9. [DONE] add.
 10. [DONE] Authentication
-
+ -->
