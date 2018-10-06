@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+
   Student.create(req.body, {
     include: [School]
   })
@@ -29,7 +30,7 @@ router.post('/', (req, res, next) => {
     .catch((err) => {
       console.log('SEquelize error')
       console.log(err);
-      next(err)
+      next(err);
     });
 });
 router.put('/', (req, res, next) => {

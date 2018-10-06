@@ -20,6 +20,10 @@ class StudentForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setImageUrl = this.setImageUrl.bind(this);
+    this.formComplete = this.formComplete.bind(this);
+  }
+  formComplete(state) {
+    return Object.values(state).every(field => field !== '' && field !== 'starting');
   }
   componentDidMount() {
     const { student } = this.props;
@@ -34,12 +38,17 @@ class StudentForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.student) {
-      this.props.update(this.state);
+    console.log(this.state);
+    if (!this.formComplete(this.state)) {
+      alert('Please fill out the entire form. Thank you.')
     } else {
-      this.props.create(this.state)
+      if (this.props.student) {
+        this.props.update(this.state);
+      } else {
+        this.props.create(this.state)
+      }
+      this.props.history.push(`/students`);
     }
-    this.props.history.push(`/students`);
   }
   render() {
     const avatarStyles = {
@@ -92,14 +101,14 @@ class StudentForm extends Component {
                       onChange={this.handleChange}
                       margin="normal"
                     />
-                    {/* <TextField
+                    <TextField
                       fullWidth
                       label="Image URL"
                       name="imageUrl"
                       value={this.state.imageUrl}
                       onChange={this.handleChange}
                       margin="normal"
-                    /> */}
+                    />
                     <TextField
                       fullWidth
                       label="Username"

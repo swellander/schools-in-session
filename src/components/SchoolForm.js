@@ -84,6 +84,7 @@ class SchoolForm extends Component {
                     initialAddress={this.state.address}
                   />
 
+
                   <TextField
                     multiline
                     fullWidth={true}
