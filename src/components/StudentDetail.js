@@ -14,7 +14,7 @@ const StudentDetail = ({ user, student, remove }) => {
   const styles = {
     marginTop: '10vh'
   }
-
+  console.log(student);
   return (
     <div style={styles}>
 
