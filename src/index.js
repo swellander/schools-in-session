@@ -8,16 +8,18 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme();
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <MuiThemeProvider theme={theme}>
-        <Main />
-      </MuiThemeProvider>
-    </Router>
-  </Provider>
-);
+// const App = () => (
+//   <Provider store={store}>
+//     <Router>
+//       <MuiThemeProvider theme={theme}>
+//         <Main />
+//       </MuiThemeProvider>
+//     </Router>
+//   </Provider>
+// );
 
 
 
-render(<App />, document.getElementById('app'));
+render(
+  <Provider store={store}> <Router><MuiThemeProvider theme={theme}><Main /></MuiThemeProvider></Router></Provider>
+  , document.getElementById('app'));
